@@ -1,0 +1,49 @@
+/* @media (min-width: 600px) {
+  html {
+    width: 90%;
+    margin: 0;
+  }
+} */
+
+@media (min-width: 600px) {
+  main {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 900px) {
+  main {
+    max-width: 800px;
+  }
+}
+
+:root {
+  --background-clr: rgb(0, 0, 0);
+  --text-color: #cadee9;
+  --accent-color: #5f9ea0;
+  --accent-text-color: #adadad;
+  --link-color: #cadee9;
+  --link-color-visited: rgb(255, 167, 234);
+  --link-color-hover: #2ff6b0;
+}
+
+.main-blurr {
+  background-color: #adadad;
+  filter: blur(4px) brightness(100%) opacity(0.06);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+html {
+  background-color: var(--background-clr);
+  color: var(--text-color);
+}
+
+a {
+  align-items: baseline;
+  color: var(--link-color);
+  font-variant: small-caps;
+  text-decoration: none;
+}

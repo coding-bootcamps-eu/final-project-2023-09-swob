@@ -8,7 +8,7 @@
     </nav>
   </header>
   <main class="login-content">
-    <div class="main-background"></div>
+    <div class="main-blurr"></div>
     <h1>Let's start</h1>
     <form>
       <label for="username"></label>
@@ -28,5 +28,5 @@
 </template>
 
 <script>
-import '@/assets/css/Login.css'
+// import '@/assets/css/Login.css'
 </script>

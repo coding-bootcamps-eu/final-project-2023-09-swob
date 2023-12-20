@@ -4,7 +4,7 @@
   }
 
   body {
-    font-family: "Oxygen", sans-serif;
+    font-family: 'Oxygen', sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
     align-items: center;
     height: 100vh;
     background-color: #000000;
-    background-image: url("andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg");
+    background-image: url('andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -116,25 +116,25 @@
   a:hover {
     text-decoration: underline;
   }
-}
 
-.footer {
-  position: fixed;
-  bottom: 6vh;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-}
+  .footer {
+    position: fixed;
+    bottom: 6vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
 
-.footer a {
-  display: block;
-  color: #cadee0;
-  margin-bottom: 5px;
-  text-decoration: none;
-}
+  .footer a {
+    display: block;
+    color: #cadee0;
+    margin-bottom: 5px;
+    text-decoration: none;
+  }
 
-.footer a span.underline {
-  text-decoration: underline;
-  cursor: pointer;
+  .footer a span.underline {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

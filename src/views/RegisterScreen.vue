@@ -4,6 +4,7 @@
     <p>SWOB YOUR FUTURE!</p>
   </header>
   <main class="login-content">
+    <div class="main-blurr"></div>
     <form>
       <label for="username">Username</label>
       <input type="text" id="username" name="username" placeholder="Username" required />

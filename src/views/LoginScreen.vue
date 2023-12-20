@@ -21,7 +21,7 @@
     <a href="#">Forgot your password?</a>
     <a href="#">Create new Account <span class="underline">here</span></a>
   </main>
-  <footer class="footer">
+  <footer>
     <a href="#">HILFE HILFE?</a>
     <a href="#">NUTZUNGSBEDINGUNGEN | DATENSCHUTZERKLÄRUNG</a>
   </footer>

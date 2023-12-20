@@ -1,17 +1,8 @@
 <template>
-  <StartScreen />
+  <router-view />
 </template>
 
-<script>
-import StartScreen from '@/components/StartScreen.vue'
-
-export default {
-  name: 'App',
-  components: {
-    StartScreen
-  }
-}
-</script>
+<script></script>
 
 <style>
 * {

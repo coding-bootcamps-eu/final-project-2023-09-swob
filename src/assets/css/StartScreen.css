@@ -35,7 +35,6 @@ article {
 }
 
 main {
-  overflow: hidden;
   grid-area: main;
   padding: 20px;
   display: flex;

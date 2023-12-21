@@ -17,7 +17,7 @@
       <label for="password"></label>
       <input type="password" id="password" name="password" placeholder="Password" required />
     </form>
-    <button type="submit">LOGIN</button>
+    <button @click="$router.push('/swipe')">LOGIN</button>
     <a href="#">Forgot your password?</a>
     <a href="#">Create new Account <span class="underline">here</span></a>
   </main>
@@ -27,6 +27,4 @@
   </footer>
 </template>
 
-<script>
-// import '@/assets/css/Login.css'
-</script>
+<script></script>

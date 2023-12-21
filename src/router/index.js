@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SwobHome from '../views/SwobHome.vue'
 import LoginScreen from '../views/LoginScreen.vue'
 import RegisterScreen from '../views/RegisterScreen.vue'
-import StartCategory from '../views/StartCategory'
-import StartFilter from '../views/StartFilter'
-import SwipeScreen from '../views/SwipeScreen'
-import MatchScreen from '../views/MatchScreen'
+import StartCategory from '../views/StartCategory.vue'
+import StartFilter from '../views/StartFilter.vue'
+import SwipeScreen from '../views/SwipeScreen.vue'
+import MatchScreen from '../views/MatchScreen.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

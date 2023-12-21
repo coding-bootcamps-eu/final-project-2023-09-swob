@@ -3,8 +3,7 @@
     <img src="@/assets/logo/LogoSwop_dark.png" alt="Your Logo" class="logo" />
     <p>SWOB YOUR FUTURE!</p>
   </header>
-  <div class="main-blurr">HELLO MIMI</div>
-  <main class="login-content">
+  <main>
     <div class="main-blurr"></div>
     <form>
       <label for="username">Username</label>
@@ -57,7 +56,7 @@
         </select>
       </div>
     </form>
-    <button type="submit">Login</button>
+    <button type="submit" @click="$router.push('/category')">Next</button>
   </main>
 </template>
 

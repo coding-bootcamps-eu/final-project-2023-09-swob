@@ -11,9 +11,6 @@
         <router-link to="/register" id="registration">JETZT REGISTRIEREN</router-link>
       </article>
     </main>
-    <footer>
-      <a class="data" href="">NUTZUNGSBEDINGUNGEN | DATENSCHUTZ</a>
-    </footer>
   </div>
 </template>
 

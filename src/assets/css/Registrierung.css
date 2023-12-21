@@ -12,7 +12,7 @@ html {
   background-repeat: no-repeat;
 }
 
-/* body {
+body {
   font-family: 'Oxygen', sans-serif;
   margin: 0;
   display: flex;
@@ -20,7 +20,7 @@ html {
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-} */
+}
 
 .login-container {
   text-align: center;
@@ -38,6 +38,7 @@ html {
   border-radius: 10px;
   margin: 10px;
 }
+
 main {
   display: flex;
   flex-direction: column;
@@ -60,7 +61,6 @@ form {
   flex-direction: column;
   padding: 15px;
   border-radius: 8px;
-  /* margin: 10px; */
 }
 
 label {
@@ -84,12 +84,14 @@ input {
 .login-content a:hover {
   text-decoration: underline;
 }
+
 hr.custom {
   height: 2px;
   background-color: black;
   margin: 20px 0;
   border: none;
 }
+
 .grid-container-one {
   display: grid;
   grid-template-columns: 10rem 10rem;
@@ -122,6 +124,7 @@ hr.custom {
 .flex select {
   height: 2.5rem;
 }
+
 button {
   padding: 0.5rem 1.5rem;
   font-size: 0.8rem;

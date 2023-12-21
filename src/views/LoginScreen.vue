@@ -12,6 +12,7 @@
         <label for="username"></label>
         <input type="text" id="username" name="username" placeholder="Username" required />
 
+
         <label for="password"></label>
         <input type="password" id="password" name="password" placeholder="Password" required />
       </form>
@@ -38,3 +39,5 @@ export default {
   }
 }
 </script>
+
+

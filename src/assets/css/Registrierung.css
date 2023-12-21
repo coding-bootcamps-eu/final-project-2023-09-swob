@@ -1,18 +1,18 @@
-/* header p {
+header p {
   padding: 0;
   margin: 0;
   font-weight: 600;
-} */
+}
 
-/* html {
+html {
   background-color: black;
   background-image: url('/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-} */
+}
 
-/* body {
+body {
   font-family: 'Oxygen', sans-serif;
   margin: 0;
   display: flex;
@@ -20,16 +20,16 @@
   justify-content: flex-start;
   align-items: center;
   height: 100vh;
-} */
+}
 
-/* .login-container {
+.login-container {
   text-align: center;
   padding: 20px;
   height: auto;
   margin-top: 20%;
-} */
+}
 
-/* .login-content {
+.login-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,8 +37,9 @@
   padding: 20px;
   border-radius: 10px;
   margin: 10px;
-} */
-/* main {
+}
+
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,54 +49,56 @@
   border-radius: 10px;
   margin: 10px;
   text-align: center;
-} */
+}
 
-/* .logo {
+.logo {
   width: 120px;
   height: auto;
-} */
+}
 
-/* form {
+form {
   display: flex;
   flex-direction: column;
   padding: 15px;
   border-radius: 8px;
-} */
+}
 
-/* label {
+label {
   margin-top: 10px;
   text-align: left;
   color: white;
-} */
+}
 
-/* input {
+input {
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 10px;
-} */
+}
 
-/* .login-content a {
+.login-content a {
   text-decoration: none;
   color: black;
   margin-top: 20px;
-} */
+}
 
-/* .login-content a:hover {
+.login-content a:hover {
   text-decoration: underline;
-} */
-/* hr.custom {
+}
+
+hr.custom {
   height: 2px;
   background-color: black;
   margin: 20px 0;
   border: none;
-} */
-/* .grid-container-one {
+}
+
+.grid-container-one {
   display: grid;
   grid-template-columns: 10rem 10rem;
   gap: 1rem;
-} */
+}
 
-/* .radio {
+.radio {
   display: grid;
   grid-template-columns: 1rem 2rem;
   flex-direction: column;
@@ -103,25 +106,26 @@
   padding-right: 1rem;
   gap: 0.8rem;
   color: white;
-} */
+}
 
-/* .radio input {
+.radio input {
   margin: 0;
-} */
+}
 
-/* .flex {
+.flex {
   display: flex;
   gap: 0.3rem;
-} */
+}
 
-/* .flex input {
+.flex input {
   margin: 0;
-} */
+}
 
-/* .flex select {
+.flex select {
   height: 2.5rem;
-} */
-/* button {
+}
+
+button {
   padding: 0.5rem 1.5rem;
   font-size: 0.8rem;
   background-color: black;
@@ -130,4 +134,4 @@
   cursor: pointer;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-} */
+}

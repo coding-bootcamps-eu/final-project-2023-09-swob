@@ -12,6 +12,7 @@ h2 {
 }
 
 body {
+  font-family: 'Oxygen', sans-serif;
   background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
   overflow: hidden;
   background-repeat: no-repeat;

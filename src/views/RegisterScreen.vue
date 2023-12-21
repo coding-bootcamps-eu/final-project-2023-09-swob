@@ -56,6 +56,6 @@
         </select>
       </div>
     </form>
-    <button type="submit">Login</button>
+    <button type="submit" @click="$router.push('/category')">Next</button>
   </main>
 </template>

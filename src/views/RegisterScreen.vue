@@ -1,11 +1,11 @@
 <template>
-  <!-- <header class="login-container">
+  <header class="login-container">
     <img src="@/assets/logo/LogoSwop_dark.png" alt="Your Logo" class="logo" />
     <p>SWOB YOUR FUTURE!</p>
   </header>
-  <div class="main-blurr">HELLO MIMI</div> -->
+  <div class="main-blurr">HELLO MIMI</div>
   <main class="login-content">
-    <!-- <div class="main-blurr"></div>
+    <div class="main-blurr"></div>
     <form>
       <label for="username">Username</label>
       <input type="text" id="username" name="username" placeholder="Username" required />
@@ -56,7 +56,7 @@
           <option value="DE">Deutschland</option>
         </select>
       </div>
-    </form> -->
+    </form>
     <button type="submit">Login</button>
   </main>
 </template>

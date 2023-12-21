@@ -37,7 +37,7 @@ const router = createRouter({
     },
     {
       path: '/swipe',
-      name: 'swipe',
+      name: 'SwipeScreen',
       component: SwipeScreen
     },
     {

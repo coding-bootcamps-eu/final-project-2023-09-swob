@@ -1,0 +1,28 @@
+body {
+  background-attachment: fixed;
+}
+
+.img-cont1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 260px;
+  height: 600px;
+  overflow: scroll;
+  gap: 1.4rem;
+  margin-top: 4rem;
+}
+
+.img-cont1 img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+}
+
+article div {
+  overflow: scroll;
+}
+
+article::-webkit-scrollbar {
+  overflow: hidden;
+  display: none;
+}

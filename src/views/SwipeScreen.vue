@@ -85,7 +85,6 @@
 </template>
 
 <script>
-import '@/assets/css/SwipeScreen.css'
 import blancaImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import mimiImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import giulioImage from '@/assets/workplaces/redd-f-5U_28ojjgms-unsplash.jpeg'
@@ -188,3 +187,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import '@/assets/css/SwipeScreen.css';
+</style>

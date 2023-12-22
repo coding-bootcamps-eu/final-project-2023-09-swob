@@ -89,3 +89,9 @@ footer > a {
   color: black;
   background: #cadee9;
 }
+
+.svg-icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  margin: 0;
+}

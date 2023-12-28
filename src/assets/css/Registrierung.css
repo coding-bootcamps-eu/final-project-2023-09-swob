@@ -1,125 +1,174 @@
-/* header p {
-  padding: 0;
-  margin: 0;
-  font-weight: 600;
-}
-
-html {
-  background-color: black;
-  background-image: url('/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 body {
-  font-family: 'Oxygen', sans-serif;
+  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
+}
+
+.grid-merge {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  overflow: hidden;
+  grid-area: main;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
-  align-items: center;
-  height: 100vh;
-}
-
-.login-container {
+  gap: 1rem;
   text-align: center;
-  padding: 20px;
-  height: auto;
-  margin-top: 20%;
+  z-index: 2;
 }
 
-.login-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-.logo {
-  width: 120px;
-  height: auto;
+.main-blurr {
+  background-color: var(--accent-text-color);
+  backdrop-filter: blur(4px) brightness(110%);
+  opacity: 0.06;
+  width: 80%;
+  height: 90%;
+  position: absolute;
+  top: 7.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  border-radius: 8px;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  margin: 0.6rem;
+  width: 17.5rem;
+}
+
+.username-and-password {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username-and-password > label {
+  color: var(--text-color);
+}
+
+.line {
+  height: 0.125rem;
+  background-color: var(--line-clr);
+  margin: 2.5rem 0;
+  border: none;
+  width: 80%;
+}
+
+.createAccount {
+  margin-bottom: 1rem;
+  width: 12.5rem;
+}
+
+.createAccount > h1 {
+  font-size: 1.4rem;
+  text-align: left;
+  padding-left: 0;
+  margin-bottom: 0.3rem;
+}
+
+.createAccount > p {
+  margin: 0;
+  font-size: 0.7rem;
+  font-variant: small-caps;
+  color: var(--btn-clr);
+  text-align: left;
+  width: 12.5rem;
+}
+
+.personal-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.9rem;
+  margin: 0.6rem;
+  width: 17.5rem;
+}
+
+.date-and-gender {
+  display: grid;
+  grid-template-columns: 6rem 6rem;
+}
+
+.date-and-gender input {
+  width: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: var(--form-clr);
+}
+
+.radio-gender {
+  display: flex;
+  grid-template-columns: 0.6rem 1rem;
+  flex-direction: column;
+  padding: 0.3rem;
+  gap: 0.2rem;
+  font-variant: small-caps;
+}
+
+.radio-gender input {
+  margin-right: 0.5rem;
+  padding: 0;
+  width: 0.8rem;
 }
 
 label {
-  margin-top: 10px;
+  margin-top: 0.625rem;
+  margin-bottom: 0.3rem;
   text-align: left;
-  color: white;
+  color: var(--form-clr);
+  width: 12.5rem;
 }
 
 input {
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
-.login-content a {
-  text-decoration: none;
-  color: black;
-  margin-top: 20px;
-}
-
-.login-content a:hover {
-  text-decoration: underline;
-}
-
-hr.custom {
-  height: 2px;
-  background-color: black;
-  margin: 20px 0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: transparent;
   border: none;
+  border-bottom: 0.063rem solid var(--accent-text-color);
+  color: var(--form-clr);
+  outline: none;
+  text-align: left;
+  width: 12.5rem;
 }
 
-.grid-container-one {
-  display: grid;
-  grid-template-columns: 10rem 10rem;
-  gap: 1rem;
+input::placeholder {
+  text-align: left;
+  font-variant: small-caps;
 }
 
-.radio {
-  display: grid;
-  grid-template-columns: 1rem 2rem;
-  flex-direction: column;
-  padding-left: 0.5rem;
-  padding-right: 1rem;
-  gap: 0.8rem;
-  color: white;
-}
-
-.radio input {
-  margin: 0;
-}
-
-.flex {
+.flex-postal-city-country {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
-.flex input {
+.flex-postal-city-country input {
   margin: 0;
+  width: 3rem;
 }
 
-.flex select {
+.flex-postal-city-country select {
   height: 2.5rem;
 }
-
-button {
-  padding: 0.5rem 1.5rem;
-  font-size: 0.8rem;
-  background-color: black;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-} */

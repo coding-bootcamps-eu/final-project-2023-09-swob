@@ -22,6 +22,9 @@
   --link-color: #cadee9;
   --link-color-visited: rgb(255, 167, 234);
   --link-color-hover: #2ff6b0;
+  --line-clr: gray;
+  --form-clr: gray;
+  --btn-clr: #cadee0;
 }
 
 header {
@@ -44,7 +47,7 @@ header img {
   height: 25px;
 }
 
-.main-blurr {
+/* .main-blurr {
   background-color: #adadad;
   backdrop-filter: blur(4px) brightness(110%);
   opacity: 0.06;
@@ -57,11 +60,15 @@ header img {
   bottom: 0;
   margin: auto;
   z-index: 1;
-}
+} */
 
 html {
   background-color: var(--background-clr);
   color: var(--text-color);
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
 }
 
 a {
@@ -78,16 +85,10 @@ footer > a {
 }
 
 .btn-style-1 {
-  margin-bottom: 1rem;
-  padding: 8px 20px;
-  font-size: 0.8rem;
+  background-color: var(--btn-clr);
+  border: solid var(--btn-clr);
   font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  color: black;
-  background: #cadee9;
+  padding: 0.5rem 1rem;
 }
 
 .svg-icon {

@@ -1,33 +1,33 @@
 <template>
-  <div class="grid-merge">
-    <header>
-      <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-      <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
-    </header>
-    <main>
-      <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
-      <h2>What kind of job would you like to get?</h2>
-      <ul>
-        <li v-for="item in items" :key="item.id">
-          <figure class="image-container" @click="toggleOverlay(item.id)">
-            <img :src="item.imageSrc" :alt="item.alt" />
-            <div class="overlay" v-if="activeOverlay === item.id">
-              <router-link to="/swipe" @click="handleOverlayClick">{{ item.caption }}</router-link>
-            </div>
-          </figure>
-        </li>
-      </ul>
-    </main>
-  </div>
+  <header>
+    <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
+    <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+  </header>
+  <main>
+    <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
+    <h2>What kind of job would you like to get?</h2>
+    <ul>
+      <li v-for="item in items" :key="item.id">
+        <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
+          <div class="overlay">
+            <section class="content">
+              <router-link
+                :to="{ name: 'SwipeScreen', query: { category: item.caption } }"
+                class="button"
+                ><p class="card-title">{{ item.caption }}</p></router-link
+              >
+            </section>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </main>
 </template>
 
 <script>
-import '@/assets/css/Category.css'
-
 export default {
   data() {
     return {
-      activeOverlay: null,
       items: [
         {
           id: 1,
@@ -51,7 +51,7 @@ export default {
           id: 4,
           imageSrc: '/src/assets/images/mika-baumeister-bGZZBDvh8s4-unsplash.jpeg',
           alt: 'A photo from the EZB building with the EZB sign in front in frankfurt',
-          caption: 'Finance & Consulting'
+          caption: 'Engineering & Architecture'
         },
         {
           id: 5,
@@ -69,49 +69,56 @@ export default {
           id: 7,
           imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
           alt: 'A girl writing on a chalkboard',
-          caption: 'Education & Research'
+          caption: 'Science & Research'
         },
         {
           id: 8,
           imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
-          caption: 'Law & Order'
+          caption: 'Human Resources'
         },
         {
           id: 9,
           imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
           alt: 'A girl writing on a chalkboard',
-          caption: 'Education & Research'
+          caption: 'Healthcare & Medicine'
         },
         {
           id: 10,
           imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
-          caption: 'Law & Order'
+          caption: 'Real Estate'
+        },
+        {
+          id: 11,
+          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
+          alt: 'A girl writing on a chalkboard',
+          caption: 'Social Services & Nonprofit'
+        },
+        {
+          id: 12,
+          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          alt: 'A picture in front of stacked container',
+          caption: 'Food & Cullinary Arts'
+        },
+        {
+          id: 13,
+          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
+          alt: 'A girl writing on a chalkboard',
+          caption: 'Customer Service'
+        },
+        {
+          id: 14,
+          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          alt: 'A picture in front of stacked container',
+          caption: 'Economics'
         }
       ]
-    }
-  },
-  mounted() {
-    this.items.forEach(async (item, index) => {
-      const imageModule = await import(`@/assets/images/image_${index + 1}.jpg`)
-      this.$set(this.items, index, { ...item, imageSrc: imageModule.default })
-    })
-  },
-  methods: {
-    toggleOverlay(itemId) {
-      this.activeOverlay = this.activeOverlay === itemId ? null : itemId
-    },
-    handleOverlayClick(caption) {
-      console.log('Overlay clicked for:', caption)
     }
   }
 }
 </script>
 
 <style scoped>
-h2 {
-  font-size: 1.5rem;
-  margin: 1rem;
-}
+@import '@/assets/css/Category.css';
 </style>

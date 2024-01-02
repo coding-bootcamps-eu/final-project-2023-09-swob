@@ -17,7 +17,9 @@
         </form>
         <button class="btn-style-1" type="submit" @click="$router.push('/swipe')">Next</button>
         <a href="#">forgot your password?</a>
-        <a href="#">create new account <span class="underline">here</span></a>
+        <router-link to="/register"
+          >create new account <span class="underline">here</span></router-link
+        >
       </main>
       <footer class="footer">
         <a href="#">hilfe hilfe?</a>

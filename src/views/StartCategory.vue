@@ -32,7 +32,7 @@ export default {
       items: [
         {
           id: 1,
-          imageSrc: '/src/assets/images/farzad-p-xSl33Wxyc-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/fahrul-razi-BR6lrzCPYPk-unsplash.jpeg',
           alt: 'a work desk with two monitors and open code',
           caption: 'IT & Consulting'
         },
@@ -68,25 +68,25 @@ export default {
         },
         {
           id: 7,
-          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/drew-hays-tGYrlchfObE-unsplash.jpeg',
           alt: 'A girl writing on a chalkboard',
           caption: 'Science & Research'
         },
         {
           id: 8,
-          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/christina-wocintechchat-com-vzfgh3RAPzM-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
           caption: 'Human Resources'
         },
         {
           id: 9,
-          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/myriam-zilles-KltoLK6Mk-g-unsplash.jpeg',
           alt: 'A girl writing on a chalkboard',
           caption: 'Healthcare & Medicine'
         },
         {
           id: 10,
-          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/tierra-mallorca-rgJ1J8SDEAY-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
           caption: 'Real Estate'
         },
@@ -98,19 +98,19 @@ export default {
         },
         {
           id: 12,
-          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          imageSrc: 'src/assets/Images/carla-martinesi-ZW9CSUdANqw-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
           caption: 'Food & Cullinary Arts'
         },
         {
           id: 13,
-          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
+          imageSrc: 'src/assets/Images/charanjeet-dhiman-mHusyBu4bxM-unsplash.jpeg',
           alt: 'A girl writing on a chalkboard',
           caption: 'Customer Service'
         },
         {
           id: 14,
-          imageSrc: '/src/assets/images/pat-whelen-RHC5ar0MFkE-unsplash.jpeg',
+          imageSrc: '/src/assets/Images/victoria-kubiaki-emPsZ6MBCUs-unsplash.jpeg',
           alt: 'A picture in front of stacked container',
           caption: 'Economics'
         }

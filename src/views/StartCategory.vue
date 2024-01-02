@@ -5,7 +5,7 @@
   </header>
   <main>
     <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
-    <h2>What kind of job would you like to get?</h2>
+    <h1 v-html="whatKindOfJobs"></h1>
     <ul>
       <li v-for="item in items" :key="item.id">
         <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+      whatKindOfJobs: 'What kind of job would you like to get?',
       items: [
         {
           id: 1,

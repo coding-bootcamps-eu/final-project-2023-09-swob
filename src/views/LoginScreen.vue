@@ -10,12 +10,26 @@
         <h1 v-html="startText"></h1>
         <form>
           <label for="username"></label>
-          <input type="text" id="username" name="username" placeholder="Username" required />
+          <input
+            @input="updateUsername"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
 
           <label for="password"></label>
-          <input type="password" id="password" name="password" placeholder="Password" required />
+          <input
+            @input="updatePassword"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
         </form>
-        <button class="btn-style-1" type="submit" @click="$router.push('/swipe')">Next</button>
+        <button class="btn-style-1" type="submit" @click="saveCredentialsAndNavigate">Next</button>
         <a href="#">forgot your password?</a>
         <router-link to="/register"
           >create new account <span class="underline">here</span></router-link
@@ -33,8 +47,34 @@
 export default {
   data() {
     return {
-      startText: "Let's start"
+      startText: "Let's start",
+      username: '',
+      password: ''
     }
+  },
+  methods: {
+    updateUsername(event) {
+      this.username = event.target.value
+    },
+    updatePassword(event) {
+      this.password = event.target.value
+    },
+    saveCredentialsAndNavigate() {
+      if (this.username.trim() !== '' && this.password.trim() !== '') {
+        const dummyLogin = {
+          username: this.username,
+          password: this.password
+        }
+        sessionStorage.setItem('credentials', JSON.stringify(dummyLogin))
+
+        this.$router.push('/swipe')
+      } else {
+        alert('Bitte fülle beide Felder aus.')
+      }
+    }
+  },
+  beforeUnmount() {
+    // sessionStorage wird automatisch beim Schließen des Browsers gelöscht
   }
 }
 </script>

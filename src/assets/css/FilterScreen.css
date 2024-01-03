@@ -1,0 +1,115 @@
+body {
+  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.grid-merge {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  overflow: hidden;
+  grid-area: main;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.main-blurr {
+  background-color: var(--accent-text-color);
+  backdrop-filter: blur(4px) brightness(110%);
+  opacity: 0.06;
+  width: 80%;
+  height: 120%;
+  position: absolute;
+  top: 23rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+article {
+  width: 90%;
+}
+
+h1 {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.type-of-employment {
+  display: grid;
+  grid-template-columns: 8rem 8rem;
+  justify-content: center;
+  margin: 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  gap: 0.1rem;
+  width: 100%;
+}
+
+.type-of-employment > label {
+  width: 8rem;
+  text-align: left;
+}
+
+.how-would-you-like-to-work {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  width: 90%;
+}
+
+.how-would-you-like-to-work > label {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.swob-from-recruit-or-agencies {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0.5rem;
+  padding-right: 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.swob-from-recruit-or-agencies > label {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.select-languages > h1 {
+  margin-bottom: 0;
+}
+
+.select-languages > p {
+  text-align: left;
+  font-variant: small-caps;
+  margin-top: 0;
+}
+
+button {
+  margin-top: 1rem;
+}

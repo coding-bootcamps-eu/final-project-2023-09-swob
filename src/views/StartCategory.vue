@@ -4,8 +4,14 @@
     <HamburgerMenu />
   </header>
   <main>
-    <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
-    <h1 v-html="whatKindOfJobs"></h1>
+    <div v-if="isLoggedIn">
+      <h1>Welcome back, {{ currentUser.firstname }}</h1>
+      <h2 v-html="whatKindOfJobs"></h2>
+    </div>
+    <div v-else>
+      <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
+      <h1 v-html="whatKindOfJobs"></h1>
+    </div>
     <ul>
       <li v-for="item in categoryStore.categorys" :key="item.id">
         <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
@@ -30,7 +36,9 @@ import { useCategoryStore } from '@/stores/category.js'
 export default {
   data() {
     return {
-      whatKindOfJobs: 'What kind of job would you like to get?'
+      whatKindOfJobs: 'What kind of job would you like to get?',
+      isLoggedIn: false,
+      currentUser: JSON.parse(sessionStorage.getItem('credentials'))
     }
   },
   setup() {
@@ -39,6 +47,7 @@ export default {
   },
   created() {
     this.loadCategory()
+    this.checkLoggedUser()
   },
   methods: {
     loadCategory() {
@@ -52,6 +61,26 @@ export default {
         })
         .then((jsonData) => {
           this.categoryStore.initCategory(jsonData)
+        })
+    },
+    checkLoggedUser() {
+      fetch('http://localhost:3000/users/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Load users was not ok.')
+          }
+        })
+        .then((jsonData) => {
+          jsonData.forEach((user) => {
+            if (this.currentUser.username === user.username) {
+              this.isLoggedIn = true
+              user.password = this.currentUser.password
+              sessionStorage.setItem('credentials', JSON.stringify(user))
+              this.currentUser = JSON.parse(sessionStorage.getItem('credentials'))
+            }
+          })
         })
     }
   },

@@ -29,7 +29,7 @@
             required
           />
         </form>
-        <button class="btn-style-1" type="submit" @click="$router.push('/category')">Next</button>
+        <button class="btn-style-1" type="submit" @click="saveCredentialsAndNavigate">Next</button>
         <a href="#">forgot your password?</a>
         <router-link to="/register"
           >create new account <span class="underline">here</span></router-link
@@ -69,7 +69,7 @@ export default {
         }
         sessionStorage.setItem('credentials', JSON.stringify(dummyLogin))
 
-        this.$router.push('/swipe')
+        this.$router.push('/category')
       } else {
         alert('Bitte fülle beide Felder aus.')
       }

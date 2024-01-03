@@ -3,7 +3,7 @@
     <div class="grid-merge">
       <header>
         <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-        <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+        <HamburgerMenu />
       </header>
       <div class="main-blurr"></div>
       <main>
@@ -150,6 +150,7 @@
 </template>
 
 <script>
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
 export default {
   data() {
     return {
@@ -160,6 +161,9 @@ export default {
       swobFrom: 'Do you want a SWOB from employers or recruitment agencies?',
       language: 'Which language would you like to work in?'
     }
+  },
+  components: {
+    HamburgerMenu
   }
 }
 </script>

@@ -29,7 +29,7 @@
             required
           />
         </form>
-        <button class="btn-style-1" type="submit" @click="saveCredentialsAndNavigate">Next</button>
+        <button class="btn-style-1" type="submit" @click="$router.push('/category')">Next</button>
         <a href="#">forgot your password?</a>
         <router-link to="/register"
           >create new account <span class="underline">here</span></router-link

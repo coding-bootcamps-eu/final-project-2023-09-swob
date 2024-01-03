@@ -3,7 +3,7 @@
     <div class="grid-merge">
       <header>
         <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-        <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+        <HamburgerMenu />
       </header>
       <div class="main-blurr"></div>
       <main>
@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
+
 export default {
   data() {
     return {
@@ -101,11 +103,13 @@ export default {
       choosePassword: 'Choose a password',
       createAcc: 'Create account'
     }
+  },
+  components: {
+    HamburgerMenu
   }
 }
 </script>
 
 <style scoped>
-/* @import 'src/assets/css/Registrierung.css'; */
 @import '@/assets/css/Registrierung.css';
 </style>

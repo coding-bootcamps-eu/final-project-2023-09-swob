@@ -1,7 +1,7 @@
 <template>
   <header>
     <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-    <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+    <HamburgerMenu />
   </header>
   <main>
     <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
 import { useCategoryStore } from '@/stores/category.js'
 export default {
   data() {
@@ -53,6 +54,10 @@ export default {
           this.categoryStore.initCategory(jsonData)
         })
     }
+  },
+
+  components: {
+    HamburgerMenu
   }
 }
 </script>

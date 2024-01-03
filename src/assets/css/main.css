@@ -1,12 +1,12 @@
-@media (min-width: 600px) {
+@media (min-width: 37.5rem) {
   main {
-    max-width: 600px;
+    max-width: 37.5rem;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 56.25rem) {
   main {
-    max-width: 800px;
+    max-width: 50rem;
   }
 }
 
@@ -25,10 +25,12 @@
   --line-clr: gray;
   --form-clr: gray;
   --btn-clr: #cadee0;
+  --clr-hamburger: white;
+  --clr-dropdown: black;
 }
 
 header {
-  height: 60px;
+  height: 3.75rem;
   display: flex;
   align-items: baseline;
   padding: 1rem;
@@ -37,30 +39,15 @@ header img {
   margin: 1rem;
 }
 .nav-logo {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .nav-menu {
   margin-left: auto;
-  width: 25px;
-  height: 25px;
+  width: 1.563rem;
+  height: 1.563rem;
 }
-
-/* .main-blurr {
-  background-color: #adadad;
-  backdrop-filter: blur(4px) brightness(110%);
-  opacity: 0.06;
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-} */
 
 html {
   background-color: var(--background-clr);

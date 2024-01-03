@@ -3,7 +3,7 @@
     <div class="grid-merge">
       <header>
         <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-        <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+        <HamburgerMenu />
       </header>
       <div class="main-blurr"></div>
       <main>
@@ -44,6 +44,8 @@
 </template>
 
 <script>
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
+
 export default {
   data() {
     return {
@@ -71,10 +73,20 @@ export default {
       } else {
         alert('Bitte fülle beide Felder aus.')
       }
+    },
+    toggleMenu() {
+      const menuIcon = document.querySelector('#hamburger-menu')
+      const navigation = document.querySelector('#navigation-host')
+
+      menuIcon.classList.toggle('change')
+      navigation.classList.toggle('change')
     }
   },
   beforeUnmount() {
     // sessionStorage wird automatisch beim Schließen des Browsers gelöscht
+  },
+  components: {
+    HamburgerMenu
   }
 }
 </script>

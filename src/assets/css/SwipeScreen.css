@@ -1,92 +1,113 @@
+body {
+  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
 main {
+  overflow: hidden;
+  grid-area: main;
+  padding: 1.25rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  margin-top: 50px;
 }
 
 form {
-  width: 280px;
-  height: 720px;
-  overflow: hidden;
-  position: relative;
-  border: 18px solid #333;
-  border-radius: 20px;
-  padding: 20px; /* Innenabstand für den Swipe-Container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  margin: 0.6rem;
+  width: 100%;
+  max-width: 17.5rem;
+  height: 50rem;
 }
-
+.swipe-container {
+  background-color: white;
+  padding: 20px;
+}
 .job-description {
   font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 12px;
+  margin-bottom: 0px; /* Verringerte Margin zwischen Job-Beschreibung und Company-Namen */
+  color: black;
+  text-align: left;
 }
 
 .info-box {
   margin-top: 5px;
-  border: 2px solid #333;
-  padding: 60px;
-  border-radius: 10px;
+  font-size: 12px;
+  border: none;
+  padding: 15px; /* Passen Sie den Padding-Wert nach Bedarf an */
+  color: black;
 }
 
 .company-name {
-  margin-top: 25px;
+  margin-top: 0px;
+  margin-bottom: 5px; /* Verringerte Margin zwischen Company-Namen und Job-Beschreibung */
+  color: black;
+  font-size: 12px;
+  text-align: left;
 }
-
 .location-section {
   display: flex;
   justify-content: space-between;
-  margin-top: 2px;
-}
-
-.workplace {
+  margin-top: 0px;
+  font-size: 12px;
   font-weight: bold;
-}
-
-.location {
-  margin-top: 10px;
+  color: black;
 }
 
 .gallery-button {
   padding: 5px;
-  margin: 0 5px; /* Verringert den Abstand zwischen den Buttons */
+  margin: 0 5px;
   cursor: pointer;
   font-size: 14px;
 }
 
 .gallery {
   display: flex;
-  justify-content: center; /* Zentriert die Bilder horizontal */
+  justify-content: center;
   margin-top: 10px;
 }
 
 .gallery img {
-  width: 60px; /* Breite der Bildergalerie anpassen */
-  height: 60px; /* Höhe der Bildergalerie anpassen */
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   margin-right: 5px;
   border-radius: 8px;
-  transition: transform 0.3s ease-in-out; /* Füge eine Transitionsanimation hinzu */
+  transition: transform 0.3s ease-in-out;
 }
 
 .gallery img:hover {
-  transform: scale(1.1); /* Vergrößere das Bild beim Überfahren mit der Maus um 10% */
+  transform: scale(1.1);
 }
 
 .filter-section {
   display: flex;
 }
 
-.filter {
-  margin-top: 5px;
-  margin-left: 8px;
-  margin-right: 10px;
-}
-
-.filter label {
-  display: block;
+.filter-label,
+.category-label {
+  display: flex;
+  flex: 0; /* Nutzt den verfügbaren Platz gleichermaßen auf */
+  font-size: 10px;
+  background-color: #ccc;
+  color: black;
+  margin-left: 2px;
   margin-bottom: 5px;
 }
-
 .swipe-buttons {
   display: flex;
   justify-content: space-between;
@@ -94,35 +115,54 @@ form {
 }
 
 button {
-  padding: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 14px;
   cursor: pointer;
+  background: transparent;
+  border: none;
 }
 
-.more-info-button {
-  align-self: flex-end;
-  padding: 5px 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  background: none;
-  border: none;
-  color: #333;
-  margin-top: -25px;
-  font-size: 12px;
+button img {
+  width: 40px;
+  height: 40px;
+}
+
+.info-box-container {
+  position: relative;
+  height: 26vh;
 }
 
 .more-info-content {
-  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 10px;
   border: 2px solid #333;
   border-radius: 8px;
-  background-color: #fff; /* Hintergrundfarbe für das Dropdown-Menü */
+  background-color: #fff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: auto;
+  box-sizing: border-box;
+  height: 100%;
+  max-height: calc(100vh - 2rem);
+  color: black;
 }
 
-.dropdown {
-  position: absolute;
-  z-index: 1000;
+.more-info-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #000000;
+  text-decoration: underline;
+  font-size: 10px;
+  margin-top: auto; /* Verwende margin-top:auto, um es nach unten zu schieben */
+  align-self: flex-end; /* Positioniere es unten rechts */
+  margin-left: 100px;
 }
 
 .lightbox {
@@ -146,19 +186,20 @@ button {
 }
 .full-screen-modal {
   position: fixed;
-  top: 45%; /* Vertikal in der Mitte der Seite */
-  left: 40%; /* Horizontal in der Mitte der Seite */
-  transform: translate(-50%, -50%); /* Zentriere das Modal */
-  width: 30%; /* Ändere dies entsprechend deinen Anforderungen */
+  top: 45%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 30%;
   height: 30%;
   background-color: white;
   z-index: 2000;
   overflow: auto;
 }
 
-.modal-content {
+.modal-content.info-box-content {
   margin: auto;
   padding: 20px;
+  width: 100%;
 }
 
 .close {
@@ -166,6 +207,20 @@ button {
   top: 10px;
   right: 10px;
   font-size: 20px;
-  color: #333;
+  color: #000000;
   cursor: pointer;
+}
+.job-description-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.company-logo-container {
+  margin-left: 10px;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
 }

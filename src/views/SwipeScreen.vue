@@ -1,88 +1,98 @@
 <template>
-  <div>
-    <header>
-      <h1>hallo i bims, Giugiusbereich</h1>
-      <button @click="$router.push('/match')">Go to Match Screen</button>
-    </header>
+  <body>
+    <div>
+      <header>
+        <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
+        <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+      </header>
 
-    <main>
-      <form
-        @submit.prevent
-        @mousedown="handleMouseDown"
-        @mousemove="handleMouseMove"
-        @mouseup="handleMouseUp"
-      >
-        <div
-          class="swipe-container"
-          :style="{ transform: `translateX(${currentX}px) rotate(${rotation}deg)` }"
-          ref="swipeContainer"
+      <main>
+        <form
+          @submit.prevent
+          @mousedown="handleMouseDown"
+          @mousemove="handleMouseMove"
+          @mouseup="handleMouseUp"
         >
-          <!-- Jobbeschreibung -->
-          <p class="job-description">
-            {{ offersStore.offers[currentIndex].title }}
-          </p>
-          <!-- Filter -->
-          <div class="filter-section">
-            <label for="filter1">Filter 1 {{ filter1 }}</label>
-            <label for="filter2">Filter 2 {{ filter2 }}</label>
-          </div>
-
-          <!-- Infobox für Firmeninformationen -->
-          <p class="info-box">{{ offersStore.offers[currentIndex].description }}</p>
-
-          <!-- Dropdown-Menü "Mehr anzeigen" über den Inhalten mit z-index -->
           <div
-            class="dropdown"
-            :style="{ zIndex: showMoreInfo ? 0 : 1000, display: showMoreInfo ? 'none' : 'block' }"
+            class="swipe-container"
+            :style="{ transform: `translateX(${currentX}px) rotate(${rotation}deg)` }"
+            ref="swipeContainer"
           >
-            <button @click="toggleMoreInfo" class="more-info-button">
-              Mehr anzeigen <i class="fas fa-chevron-down"></i>
-            </button>
-            <div v-show="showMoreInfo" class="more-info-content">
-              <p>{{ profiles[currentIndex].moreInfo }}</p>
+            <!-- Jobbeschreibung -->
+            <div class="job-description-container">
+              <div class="job-description">
+                {{ offersStore.offers[currentIndex].title }}
+              </div>
+              <div class="company-logo-container">
+                <img
+                  class="company-logo"
+                  :src="companysStore.companys[currentIndex].logo"
+                  alt="Company Logo"
+                />
+              </div>
+            </div>
+            <!-- Company Name -->
+            <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
+
+            <!-- Filter -->
+            <div class="filter-section">
+              <label for="selectedCategory" class="category-label">{{
+                $route.query.categoryName
+              }}</label>
+              <label for="filter1" class="filter-label">Filter 1 {{ filter1 }}</label>
+            </div>
+
+            <!-- Infobox für Firmeninformationen -->
+            <div class="info-box-container">
+              <p class="info-box" v-if="!showMoreInfo">
+                {{ truncateDescription(offersStore.offers[currentIndex].description, 300) }}
+                <button @click="toggleMoreInfo" class="more-info-button">
+                  Mehr anzeigen <i class="fas fa-chevron-down"></i>
+                </button>
+              </p>
+            </div>
+            <div v-show="showMoreInfo" class="more-info-content" ref="moreInfoContent">
+              <span class="close" @click="toggleMoreInfo">&times;</span>
+              <div class="modal-content info-box-content">
+                <p>{{ offersStore.offers[currentIndex].description }}</p>
+              </div>
+            </div>
+
+            <!-- Standort -->
+            <div class="location-section">
+              <p class="workplace">Workplace</p>
+              <p class="location">{{ profiles[currentIndex].location }}</p>
+            </div>
+
+            <!-- Bildergalerie -->
+            <div class="gallery">
+              <img
+                v-for="image in profiles[currentIndex].gallery"
+                :src="image"
+                :key="image"
+                @click="openLightbox(image)"
+                alt="Gallery Image"
+              />
+            </div>
+
+            <!-- Lightbox -->
+            <div v-if="lightboxImage" @click="closeLightbox" class="lightbox">
+              <img :src="lightboxImage" alt="Enlarged Image" />
             </div>
           </div>
 
-          <!-- Company Name -->
-          <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
-
-          <!-- Standort -->
-          <div class="location-section">
-            <p class="workplace">Workplace</p>
-            <p class="location">{{ profiles[currentIndex].location }}</p>
+          <div class="swipe-buttons">
+            <button @click="swipeLeft">
+              <img src="@/assets/icons/no.png" alt="Swipe Left Icon" />
+            </button>
+            <button @click="swipeRight">
+              <img src="@/assets/icons/yes.png" alt="Swipe Right Icon" />
+            </button>
           </div>
-
-          <!-- Bildergalerie -->
-          <div class="gallery">
-            <img
-              v-for="image in profiles[currentIndex].gallery"
-              :src="image"
-              :key="image"
-              @click="openLightbox(image)"
-              alt="Gallery Image"
-            />
-          </div>
-
-          <!-- Lightbox -->
-          <div v-if="lightboxImage" @click="closeLightbox" class="lightbox">
-            <img :src="lightboxImage" alt="Enlarged Image" />
-          </div>
-        </div>
-
-        <div class="swipe-buttons">
-          <button @click="swipeLeft">&lt; Swipe Left</button>
-          <button @click="swipeRight">Swipe Right &gt;</button>
-        </div>
-      </form>
-
-      <div v-if="showMoreInfo" class="full-screen-modal">
-        <div class="modal-content">
-          <span class="close" @click="toggleMoreInfo">&times;</span>
-          <p>{{ profiles[currentIndex].moreInfo }}</p>
-        </div>
-      </div>
-    </main>
-  </div>
+        </form>
+      </main>
+    </div>
+  </body>
 </template>
 
 <script>
@@ -96,39 +106,20 @@ export default {
     return {
       profiles: [
         {
-          id: 1,
-          name: 'Blanca',
           image: blancaImage,
-          company: 'Company A',
-          job: 'Software Developer',
           location: 'City A',
-          additionalInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          moreInfo: 'Weitere Informationen über Blanca.',
           gallery: [blancaImage, blancaImage, blancaImage]
         },
         {
-          id: 2,
-          name: 'Mimi',
           image: mimiImage,
-          company: 'XYZ Design',
-          job: 'UX Designer',
           location: 'City B',
-          additionalInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          moreInfo: 'Weitere Informationen über Mimi.',
           gallery: [mimiImage, mimiImage]
         },
         {
-          id: 3,
-          name: 'Giulio',
           image: giulioImage,
-          company: '123 Analytics',
-          job: 'Data Scientist',
           location: 'City C',
-          additionalInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          moreInfo: 'Weitere Informationen über Giulio.',
           gallery: [giulioImage]
         }
-        // ... (weitere Profile)
       ],
       currentIndex: 0,
       startX: 0,
@@ -180,6 +171,13 @@ export default {
           console.log(jsonData)
         })
     },
+    truncateDescription(description, maxLength) {
+      if (description.length > maxLength) {
+        return `${description.slice(0, maxLength)}...`
+      } else {
+        return description
+      }
+    },
     swipeLeft() {
       this.currentIndex = (this.currentIndex + 1) % this.profiles.length
     },
@@ -221,6 +219,11 @@ export default {
     },
     toggleMoreInfo() {
       this.showMoreInfo = !this.showMoreInfo
+      if (this.showMoreInfo) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
     },
     openLightbox(image) {
       this.lightboxImage = image

@@ -7,12 +7,12 @@
     <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
     <h1 v-html="whatKindOfJobs"></h1>
     <ul>
-      <li v-for="item in items" :key="item.id">
+      <li v-for="item in categoryStore.categorys" :key="item.id">
         <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
           <div class="overlay">
             <section class="content">
               <router-link
-                :to="{ name: 'SwipeScreen', query: { category: item.caption } }"
+                :to="{ name: 'SwipeScreen', query: { category: item.id } }"
                 class="button"
                 ><p class="card-title">{{ item.caption }}</p></router-link
               >
@@ -25,96 +25,33 @@
 </template>
 
 <script>
+import { useCategoryStore } from '@/stores/category.js'
 export default {
   data() {
     return {
-      whatKindOfJobs: 'What kind of job would you like to get?',
-      items: [
-        {
-          id: 1,
-          imageSrc: '/src/assets/Images/fahrul-razi-BR6lrzCPYPk-unsplash.jpeg',
-          alt: 'a work desk with two monitors and open code',
-          caption: 'IT & Consulting'
-        },
-        {
-          id: 2,
-          imageSrc: '/src/assets/images/davisuko-5E5N49RWtbA-unsplash.jpeg',
-          alt: 'Blue Background and table with a blue sliced orange',
-          caption: 'Art & Design'
-        },
-        {
-          id: 3,
-          imageSrc: '/src/assets/images/adem-ay-Tk9m_HP4rgQ-unsplash.jpeg',
-          alt: 'A phone with social media apps',
-          caption: 'Sales & Marketing'
-        },
-        {
-          id: 4,
-          imageSrc: '/src/assets/images/mika-baumeister-bGZZBDvh8s4-unsplash.jpeg',
-          alt: 'A photo from the EZB building with the EZB sign in front in frankfurt',
-          caption: 'Engineering & Architecture'
-        },
-        {
-          id: 5,
-          imageSrc: '/src/assets/images/natali-quijano-N79MYsd2Ce4-unsplash.jpeg',
-          alt: 'Wing of a plane above the clouds',
-          caption: 'Tourism & Service'
-        },
-        {
-          id: 6,
-          imageSrc: '/src/assets/images/nick-karvounis-XcLQN-2R9CM-unsplash.jpeg',
-          alt: 'A mans hands while working with tools',
-          caption: 'Craftmanship'
-        },
-        {
-          id: 7,
-          imageSrc: '/src/assets/Images/drew-hays-tGYrlchfObE-unsplash.jpeg',
-          alt: 'A girl writing on a chalkboard',
-          caption: 'Science & Research'
-        },
-        {
-          id: 8,
-          imageSrc: '/src/assets/Images/christina-wocintechchat-com-vzfgh3RAPzM-unsplash.jpeg',
-          alt: 'A picture in front of stacked container',
-          caption: 'Human Resources'
-        },
-        {
-          id: 9,
-          imageSrc: '/src/assets/Images/myriam-zilles-KltoLK6Mk-g-unsplash.jpeg',
-          alt: 'A girl writing on a chalkboard',
-          caption: 'Healthcare & Medicine'
-        },
-        {
-          id: 10,
-          imageSrc: '/src/assets/Images/tierra-mallorca-rgJ1J8SDEAY-unsplash.jpeg',
-          alt: 'A picture in front of stacked container',
-          caption: 'Real Estate'
-        },
-        {
-          id: 11,
-          imageSrc: '/src/assets/images/nikhita-s-NsPDiPFTp4c-unsplash.jpeg',
-          alt: 'A girl writing on a chalkboard',
-          caption: 'Social Services & Nonprofit'
-        },
-        {
-          id: 12,
-          imageSrc: 'src/assets/Images/carla-martinesi-ZW9CSUdANqw-unsplash.jpeg',
-          alt: 'A picture in front of stacked container',
-          caption: 'Food & Cullinary Arts'
-        },
-        {
-          id: 13,
-          imageSrc: 'src/assets/Images/charanjeet-dhiman-mHusyBu4bxM-unsplash.jpeg',
-          alt: 'A girl writing on a chalkboard',
-          caption: 'Customer Service'
-        },
-        {
-          id: 14,
-          imageSrc: '/src/assets/Images/victoria-kubiaki-emPsZ6MBCUs-unsplash.jpeg',
-          alt: 'A picture in front of stacked container',
-          caption: 'Economics'
-        }
-      ]
+      whatKindOfJobs: 'What kind of job would you like to get?'
+    }
+  },
+  setup() {
+    const categoryStore = useCategoryStore()
+    return { categoryStore }
+  },
+  created() {
+    this.loadCategory()
+  },
+  methods: {
+    loadCategory() {
+      fetch('http://localhost:3000/category/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Load Category was not ok.')
+          }
+        })
+        .then((jsonData) => {
+          this.categoryStore.initCategory(jsonData)
+        })
     }
   }
 }

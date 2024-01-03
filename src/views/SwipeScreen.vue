@@ -7,7 +7,6 @@
 
     <main>
       <form
-        id="app"
         @submit.prevent
         @mousedown="handleMouseDown"
         @mousemove="handleMouseMove"
@@ -19,7 +18,9 @@
           ref="swipeContainer"
         >
           <!-- Jobbeschreibung -->
-          <p class="job-description">{{ profiles[currentIndex].job }}</p>
+          <p class="job-description">
+            {{ offersStore.offers[currentIndex].title }}
+          </p>
           <!-- Filter -->
           <div class="filter-section">
             <label for="filter1">Filter 1 {{ filter1 }}</label>
@@ -27,7 +28,7 @@
           </div>
 
           <!-- Infobox für Firmeninformationen -->
-          <p class="info-box">{{ profiles[currentIndex].additionalInfo }}</p>
+          <p class="info-box">{{ offersStore.offers[currentIndex].description }}</p>
 
           <!-- Dropdown-Menü "Mehr anzeigen" über den Inhalten mit z-index -->
           <div
@@ -43,7 +44,7 @@
           </div>
 
           <!-- Company Name -->
-          <h3 class="company-name">{{ profiles[currentIndex].company }}</h3>
+          <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
 
           <!-- Standort -->
           <div class="location-section">
@@ -85,6 +86,8 @@
 </template>
 
 <script>
+import { useOfferStore } from '@/stores/offers.js'
+import { useCompanyStore } from '@/stores/company.js'
 import blancaImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import mimiImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import giulioImage from '@/assets/workplaces/redd-f-5U_28ojjgms-unsplash.jpeg'
@@ -135,7 +138,48 @@ export default {
       lightboxImage: null
     }
   },
+  setup() {
+    const offersStore = useOfferStore()
+    const companysStore = useCompanyStore()
+    return { offersStore, companysStore }
+  },
+  created() {
+    this.loadOffers(), this.loadCompanys()
+  },
   methods: {
+    loadOffers() {
+      fetch('http://localhost:3000/offers/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Load offers was not ok.')
+          }
+        })
+        .then((jsonData) => {
+          this.offersStore.initOffers(
+            jsonData.filter((object) => {
+              if (object.categoryID === this.$route.query.category) {
+                return object
+              }
+            })
+          )
+        })
+    },
+    loadCompanys() {
+      fetch('http://localhost:3000/companies/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Load companys was not ok.')
+          }
+        })
+        .then((jsonData) => {
+          this.companysStore.initCompany(jsonData)
+          console.log(jsonData)
+        })
+    },
     swipeLeft() {
       this.currentIndex = (this.currentIndex + 1) % this.profiles.length
     },

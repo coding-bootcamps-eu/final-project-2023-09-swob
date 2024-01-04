@@ -3,7 +3,7 @@
     <div>
       <header>
         <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-        <img class="nav-menu" src="@/assets/icons/burgermenue_light.png" alt="Navigation" />
+        <HamburgerMenu />
       </header>
 
       <main>
@@ -18,22 +18,23 @@
             :style="{ transform: `translateX(${currentX}px) rotate(${rotation}deg)` }"
             ref="swipeContainer"
           >
-            <!-- Jobbeschreibung -->
-            <div class="job-description-container">
-              <div class="job-description">
-                {{ offersStore.offers[currentIndex].title }}
+            <div class="title-company-img-container">
+              <!-- Jobbeschreibung -->
+              <div class="job-description-container">
+                <div class="job-description">
+                  {{ offersStore.offers[currentIndex].title }}
+                </div>
+                <div class="company-logo-container">
+                  <img
+                    class="company-logo"
+                    :src="companysStore.companys[currentIndex].logo"
+                    alt="Company Logo"
+                  />
+                </div>
               </div>
-              <div class="company-logo-container">
-                <img
-                  class="company-logo"
-                  :src="companysStore.companys[currentIndex].logo"
-                  alt="Company Logo"
-                />
-              </div>
+              <!-- Company Name -->
+              <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
             </div>
-            <!-- Company Name -->
-            <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
-
             <!-- Filter -->
             <div class="filter-section">
               <label for="selectedCategory" class="category-label">{{
@@ -101,6 +102,7 @@ import { useCompanyStore } from '@/stores/company.js'
 import blancaImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import mimiImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import giulioImage from '@/assets/workplaces/redd-f-5U_28ojjgms-unsplash.jpeg'
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
 export default {
   data() {
     return {
@@ -231,6 +233,9 @@ export default {
     closeLightbox() {
       this.lightboxImage = null
     }
+  },
+  components: {
+    HamburgerMenu
   }
 }
 </script>

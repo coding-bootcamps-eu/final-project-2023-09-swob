@@ -40,7 +40,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  z-index: 2;
+  z-index: 4;
 }
 
 .change {
@@ -72,7 +72,6 @@ export default {
 
 .change .navigation {
   display: flex;
-  /* transition: margin-right 2s ease-in-out; */
   right: -18.75rem;
   width: 8.125rem;
   height: 100%;
@@ -82,12 +81,11 @@ export default {
   right: 0;
   justify-content: center;
   flex-direction: column;
-  /* border-radius: 30% 0 0 30%; */
-  z-index: 1;
+  z-index: 3;
 }
 
 .navigation li {
-  padding: 0.2rem 0.4rem;
+  padding: 0.2rem 1rem;
   list-style: none;
   text-align: right;
 }

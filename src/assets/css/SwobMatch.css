@@ -1,0 +1,220 @@
+body {
+  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.grid-merge {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  overflow: hidden;
+  grid-area: main;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.match-container {
+  background-color: var(--clr-match-container);
+  width: 90%;
+  height: 100%;
+  color: var(--clr-dropdown);
+}
+
+.company-container,
+.user-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.company-container {
+  padding-bottom: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-container {
+  padding-top: 3rem;
+  margin-top: 0.5rem;
+}
+
+.company-container-name-city-img {
+  display: flex;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
+.company-container-name-city h2 {
+  padding-top: 0;
+  padding-right: 1rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.text {
+  margin: 1rem;
+  text-align: left;
+}
+
+.company {
+  background-color: var(--accent-text-color);
+  border-radius: 50px;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.company-container-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-bottom: 1rem;
+  gap: 3rem;
+}
+.link a {
+  all: unset;
+  color: var(--clr-dropdown);
+  padding-top: 0.5rem;
+  margin: 1rem 0 1rem 1rem;
+  font-weight: 800;
+}
+
+.link-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  padding-top: 0.5rem;
+  margin: 0.4rem 0.4rem 0 0.4rem;
+  text-align: center;
+}
+
+.logo {
+  width: 10rem;
+  height: 9rem;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 100%;
+}
+
+.user-container-name-city-img {
+  display: flex;
+  text-align: right;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+}
+
+.user {
+  background-color: var(--accent-text-color);
+  border-radius: 50px;
+  padding: 0.5rem;
+  margin-right: 0.6rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.user-container-name-city h2 {
+  padding-top: 0;
+  padding-left: 1rem;
+  margin: 0;
+}
+
+.about-me {
+  text-align: left;
+  margin-left: 1rem;
+  padding-top: 1rem;
+  font-weight: 800;
+}
+.profile {
+  text-align: left;
+  padding-bottom: 1rem;
+  font-weight: 800;
+}
+
+.btn-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-container-light {
+  background-color: var(--btn-clr);
+  width: 15rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-container-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background-color: black;
+  border: 0.1rem solid white;
+}
+.btn-conversation,
+.btn-save {
+  all: unset;
+  color: black;
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.btn-dismiss {
+  all: unset;
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.btn-icon-light {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: var(--btn-clr);
+}
+
+.btn-icon-dark {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: black;
+}
+
+button {
+  margin-left: auto;
+  margin-right: auto;
+}

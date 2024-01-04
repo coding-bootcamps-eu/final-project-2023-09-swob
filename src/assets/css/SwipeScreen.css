@@ -13,12 +13,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
   text-align: center;
   z-index: 2;
   position: relative;
-  margin-top: 50px;
+  margin-top: 3.125rem;
 }
 
 form {
@@ -33,103 +31,60 @@ form {
   height: 50rem;
 }
 .swipe-container {
-  background-color: white;
-  padding: 20px;
+  background-color: var(--clr-light-container);
+  padding: 1.25rem;
+  width: 115%;
 }
+
+.title-company-img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.job-description-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .job-description {
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 0px; /* Verringerte Margin zwischen Job-Beschreibung und Company-Namen */
-  color: black;
+  font-weight: 800;
+  font-size: 0.75rem;
+  margin-bottom: 0; /* Verringerte Margin zwischen Job-Beschreibung und Company-Namen */
+  color: var(--text-clr-on-light-background);
   text-align: left;
 }
 
-.info-box {
-  margin-top: 5px;
-  font-size: 12px;
-  border: none;
-  padding: 15px; /* Passen Sie den Padding-Wert nach Bedarf an */
-  color: black;
+.company-logo-container {
+  margin-left: 0.625rem;
+}
+
+.company-logo {
+  width: 3.125rem;
+  height: 3.125rem;
 }
 
 .company-name {
-  margin-top: 0px;
-  margin-bottom: 5px; /* Verringerte Margin zwischen Company-Namen und Job-Beschreibung */
-  color: black;
-  font-size: 12px;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Verringerte Margin zwischen Company-Namen und Job-Beschreibung */
+  color: var(--text-clr-on-light-background);
+  font-size: 0.75rem;
   text-align: left;
-}
-.location-section {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0px;
-  font-size: 12px;
-  font-weight: bold;
-  color: black;
-}
-
-.gallery-button {
-  padding: 5px;
-  margin: 0 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.gallery {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.gallery img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  margin-right: 5px;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.gallery img:hover {
-  transform: scale(1.1);
-}
-
-.filter-section {
-  display: flex;
-}
-
-.filter-label,
-.category-label {
-  display: flex;
-  flex: 0; /* Nutzt den verfügbaren Platz gleichermaßen auf */
-  font-size: 10px;
-  background-color: #ccc;
-  color: black;
-  margin-left: 2px;
-  margin-bottom: 5px;
-}
-.swipe-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-button {
-  padding: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-button img {
-  width: 40px;
-  height: 40px;
 }
 
 .info-box-container {
   position: relative;
   height: 26vh;
+}
+
+.info-box {
+  margin-top: 0.313rem;
+  font-size: 0.75rem;
+  border: none;
+  text-align: left;
+  padding: 0.938rem; /* Passen Sie den Padding-Wert nach Bedarf an */
+  color: var(--text-clr-on-light-background);
 }
 
 .more-info-content {
@@ -138,10 +93,10 @@ button img {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 10px;
-  border: 2px solid #333;
-  border-radius: 8px;
-  background-color: #fff;
+  padding: 0.625rem;
+  border: 0.125rem solid var(--clr-border-radius-dark);
+  border-radius: 0.5rem;
+  background-color: var(--clr-background-show-more-content);
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -150,19 +105,72 @@ button img {
   box-sizing: border-box;
   height: 100%;
   max-height: calc(100vh - 2rem);
-  color: black;
+  color: var(--text-clr-on-light-background);
 }
 
 .more-info-button {
   cursor: pointer;
   background: none;
   border: none;
-  color: #000000;
-  text-decoration: underline;
-  font-size: 10px;
+  color: var(--text-clr-on-light-background);
+  font-weight: 800;
+  font-size: 0.7rem;
   margin-top: auto; /* Verwende margin-top:auto, um es nach unten zu schieben */
+  padding: 0.5rem;
   align-self: flex-end; /* Positioniere es unten rechts */
-  margin-left: 100px;
+  margin-left: 7rem;
+}
+
+.location-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--text-clr-on-light-background);
+}
+
+.workplace {
+  font-weight: 800;
+}
+
+.filter-section {
+  display: flex;
+}
+
+.filter-section {
+  display: flex;
+  gap: 1rem;
+  flex: 0; /* Nutzt den verfügbaren Platz gleichermaßen auf */
+  font-size: 0.625rem;
+  width: auto;
+  margin-bottom: 0.313rem;
+}
+
+.category-label,
+.filter-label {
+  background-color: var(--clr-filter-light);
+  color: var(--text-clr-on-dark-background);
+  padding: 0.3rem;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
+}
+
+.gallery img {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  margin-right: 0.313rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
 }
 
 .lightbox {
@@ -181,46 +189,42 @@ button img {
 .lightbox img {
   max-width: 80%;
   max-height: 80%;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.3);
 }
-.full-screen-modal {
-  position: fixed;
-  top: 45%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  width: 30%;
-  height: 30%;
-  background-color: white;
-  z-index: 2000;
-  overflow: auto;
+
+.swipe-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+}
+
+button {
+  padding: 0.313rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+button img {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .modal-content.info-box-content {
   margin: auto;
-  padding: 20px;
+  padding: 1.25rem;
   width: 100%;
+  text-align: left;
+  background-color: var(--clr-background-show-more-content);
 }
 
 .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  color: #000000;
+  top: 0.625rem;
+  right: 0.625rem;
+  font-size: 1.25rem;
+  color: var(--text-clr-on-light-background);
   cursor: pointer;
-}
-.job-description-container {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.company-logo-container {
-  margin-left: 10px;
-}
-
-.company-logo {
-  width: 50px;
-  height: 50px;
 }

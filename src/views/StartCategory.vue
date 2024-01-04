@@ -18,9 +18,14 @@
           <div class="overlay">
             <section class="content">
               <router-link
-                :to="{ name: 'SwipeScreen', query: { category: item.id } }"
+                :to="{
+                  name: 'SwipeScreen',
+                  query: { category: item.id, categoryName: item.caption }
+                }"
                 class="button"
-                ><p class="card-title">{{ item.caption }}</p></router-link
+              >
+                <p class="card-title">{{ item.caption }}</p>
+              </router-link>
               >
             </section>
           </div>

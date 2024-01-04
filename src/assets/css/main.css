@@ -17,6 +17,12 @@
 :root {
   --background-clr: rgb(0, 0, 0);
   --text-color: #cadee9;
+  --clr-background-show-more-content: #cadee0;
+  --clr-light-container: white;
+  --text-clr-on-light-background: black;
+  --text-clr-on-dark-background: white;
+  --clr-border-radius-dark: #333;
+  --clr-filter-light: lightgray;
   --accent-color: #5f9ea0;
   --accent-text-color: #adadad;
   --link-color: #cadee9;

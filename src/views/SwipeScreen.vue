@@ -86,9 +86,14 @@
             <button @click="swipeLeft">
               <img src="@/assets/icons/no.png" alt="Swipe Left Icon" />
             </button>
-            <button @click="swipeRight">
+            <!-- <button @click="swipeRight">
               <img src="@/assets/icons/yes.png" alt="Swipe Right Icon" />
-            </button>
+            </button> -->
+            <div class="link-to-match">
+              <router-link to="/match" id="match"
+                ><img class="icon-green" src="@/assets/icons/yes.png" alt="Swipe Right Icon"
+              /></router-link>
+            </div>
           </div>
         </form>
       </main>

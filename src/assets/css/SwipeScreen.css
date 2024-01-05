@@ -212,6 +212,15 @@ button img {
   height: 2.5rem;
 }
 
+.icon-green {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.link-to-match {
+  padding: 0.313rem;
+}
+
 .modal-content.info-box-content {
   margin: auto;
   padding: 1.25rem;

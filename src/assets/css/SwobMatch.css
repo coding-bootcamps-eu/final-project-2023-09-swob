@@ -171,11 +171,18 @@ p {
 
 .btn-container-light {
   background-color: var(--btn-clr);
+
   width: 15rem;
   padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn-container-light a {
+  all: unset;
+  color: var(--text-clr-on-light-background);
+  font-size: 0.9rem;
 }
 
 .btn-container-dark {
@@ -188,13 +195,6 @@ p {
   background-color: var(--background-clr);
   border: 0.1rem solid white;
 }
-.btn-conversation,
-.btn-save {
-  all: unset;
-  color: var(--text-clr-on-light-background);
-  padding-left: 0.5rem;
-  font-size: 0.9rem;
-}
 
 .btn-dismiss {
   all: unset;
@@ -206,6 +206,7 @@ p {
   width: 1.3rem;
   height: 1.3rem;
   background-color: var(--btn-clr);
+  margin-right: 0.3rem;
 }
 
 .btn-icon-dark {

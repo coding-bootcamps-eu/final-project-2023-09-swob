@@ -58,11 +58,13 @@
         <div class="btn-flex">
           <div class="btn-container-light">
             <img class="btn-icon-light" src="@/assets/icons/konversation.png" alt="chat" />
-            <button class="btn-conversation">Start your conversation now!</button>
+            <router-link to="/usermessenger" id="usermessenger"
+              >Start your conversation now!</router-link
+            >
           </div>
           <div class="btn-container-light">
             <img class="btn-icon-light" src="@/assets/icons/herz.png" alt="chat" />
-            <button class="btn-save">Save and continue SWOB</button>
+            <router-link to="/swipe" id="swipe">Save and continue SWOB</router-link>
           </div>
           <div class="btn-container-dark">
             <img class="btn-icon-dark" src="@/assets/icons/behalter.png" alt="chat" />

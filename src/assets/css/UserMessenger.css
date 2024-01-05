@@ -1,0 +1,206 @@
+body {
+  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+}
+
+.grid-merge {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  overflow: hidden;
+  grid-area: main;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  z-index: 2;
+}
+
+#top-article {
+  position: absolute;
+  top: 9rem;
+  left: 37%;
+  transform: translateX(-50%);
+}
+
+.company-infos {
+  display: flex;
+  gap: 1rem;
+  margin-right: auto;
+}
+
+.company {
+  background-color: var(--accent-text-color);
+  border-radius: 50px;
+  padding: 0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.name-wanted-job-online-status {
+  font-size: 0.9rem;
+}
+
+.name-wanted-job-online-status h1,
+p {
+  margin: 0;
+  text-align: left;
+}
+
+.line {
+  height: 0.03rem;
+  background-color: var(--line-clr);
+  margin: 5rem 0 0.2rem 0;
+  border: none;
+  width: 120%;
+}
+/*CHAT AREA*/
+.chat-area {
+  width: 100%;
+}
+
+.text-from-company {
+  background-color: var(--link-color);
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+  width: 17rem;
+}
+.message-left {
+  color: var(--text-clr-on-light-background);
+  padding: 0.1rem 0.1rem 0.1rem 1rem;
+  font-size: 0.7rem;
+  display: inline-block;
+}
+.message p {
+  margin: 0;
+}
+
+.company-name {
+  font-weight: 800;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+.company-message {
+  margin-bottom: 0.5rem;
+}
+
+span {
+  color: transparent;
+  display: inline-block;
+}
+
+small {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: var(--form-clr);
+  padding-right: 0.3rem;
+  padding-bottom: 0.2rem;
+}
+
+.text-from-user {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  text-align: right;
+  width: 16rem;
+}
+
+.message-right {
+  margin-top: 1rem;
+  margin-left: 3rem;
+  background-color: var(--link-color);
+  color: var(--text-clr-on-light-background);
+  padding: 0.1rem 1rem 0.1rem 1rem;
+  font-size: 0.7rem;
+  display: inline-block;
+  border-radius: 0.625rem;
+}
+.user-message {
+  text-align: right;
+}
+
+/*CHAT AREA*/
+
+#bottom-article {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.send-content-area {
+  background-color: var(--background-clr);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.send-content-area > input {
+  background-color: var(--background-clr);
+  border: none;
+  height: 2.5rem;
+}
+
+.link-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: 0.4rem;
+  text-align: center;
+}
+
+button {
+  all: unset;
+  display: inline-block;
+  padding: 0.6rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+}
+
+.icon-btn-smile {
+  background-image: url('@/assets/icons/smile.png');
+}
+.icon-btn-upload {
+  background-image: url('@/assets/icons/upload.png');
+}
+.icon-btn-attach-file {
+  background-image: url('@/assets/icons/attach-file.png');
+}
+.icon-btn-paper-plane {
+  background-image: url('@/assets/icons/paper-plane.png');
+}
+.icon-btn-appointment {
+  background-image: url('@/assets/icons/user.png');
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.8rem;
+}

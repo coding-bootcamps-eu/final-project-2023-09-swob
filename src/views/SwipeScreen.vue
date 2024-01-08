@@ -40,7 +40,7 @@
               <label for="selectedCategory" class="category-label">{{
                 $route.query.categoryName
               }}</label>
-              <label for="filter1" class="filter-label">Filter 1 {{ filter1 }}</label>
+              <label for="filter1" class="filter-label">{{ filtersStore.howWork }}</label>
             </div>
 
             <!-- Infobox für Firmeninformationen -->
@@ -99,11 +99,25 @@
 <script>
 import { useOfferStore } from '@/stores/offers.js'
 import { useCompanyStore } from '@/stores/company.js'
+import { useFiltersStore } from '@/stores/filter.js'
 import blancaImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import mimiImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import giulioImage from '@/assets/workplaces/redd-f-5U_28ojjgms-unsplash.jpeg'
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 export default {
+  setup() {
+    const filtersStore = useFiltersStore()
+    const offersStore = useOfferStore()
+    const companysStore = useCompanyStore()
+
+    const sessionFilters = JSON.parse(sessionStorage.getItem('filters'))
+
+    if (Array.isArray(sessionFilters) && sessionFilters.length > 0) {
+      filtersStore.howWork = sessionFilters[0].howWork
+    }
+
+    return { filtersStore, offersStore, companysStore }
+  },
   data() {
     return {
       profiles: [
@@ -130,11 +144,6 @@ export default {
       showMoreInfo: false,
       lightboxImage: null
     }
-  },
-  setup() {
-    const offersStore = useOfferStore()
-    const companysStore = useCompanyStore()
-    return { offersStore, companysStore }
   },
   created() {
     this.loadOffers(), this.loadCompanys()

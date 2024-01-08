@@ -6,7 +6,7 @@
   </div>
   <div id="navigation-host">
     <div class="navigation">
-      <li><a class="nav-link" href="/Profil">Profil</a></li>
+      <li><router-link to="/personalprofile" id="profile">Profile</router-link></li>
       <li><router-link to="/swipe" id="swipe">Save and continue SWOB</router-link></li>
       <li><a class="nav-link" href="/SavedJobs">Saved Jobs</a></li>
       <li><a class="nav-link" href="/Messenger">Messenger</a></li>

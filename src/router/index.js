@@ -7,6 +7,7 @@ import StartFilter from '../views/StartFilter.vue'
 import SwipeScreen from '../views/SwipeScreen.vue'
 import MatchScreen from '../views/MatchScreen.vue'
 import UserMessenger from '../views/UserMessenger.vue'
+import PersonalProfile from '../views/PersonalProfile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/usermessenger',
       name: 'userMessenger',
       component: UserMessenger
+    },
+    {
+      path: '/personalprofile',
+      name: 'personalProfile',
+      component: PersonalProfile
     }
   ]
 })

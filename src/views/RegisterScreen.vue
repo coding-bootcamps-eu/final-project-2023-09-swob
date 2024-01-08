@@ -10,16 +10,31 @@
         <form>
           <div class="username-and-password">
             <label for="username" v-html="chooseUsername"></label>
-            <input type="text" id="username" name="username" placeholder="username" required />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="username"
+              v-model="form.username"
+              required
+            />
 
             <label for="password" v-html="choosePassword"></label>
-            <input type="password" id="password" name="password" placeholder="password" required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+              v-model="form.password"
+              required
+            />
             <label for="repeatPassword"></label>
             <input
               type="password"
               id="repeatPassword"
               name="repeatPassword"
               placeholder="repeat password"
+              v-model="form.repeatPassword"
               required
             />
           </div>
@@ -29,25 +44,56 @@
             <p>fill the details to create your swob card</p>
           </div>
           <div class="personal-information">
-            <input type="text" id="lastname" name="lastname" placeholder="last name" required />
-            <input type="text" id="firstname" name="firstname" placeholder="first name" required />
+            <input
+              type="text"
+              id="lastname"
+              name="lastname"
+              placeholder="last name"
+              v-model="form.lastname"
+              required
+            />
+            <input
+              type="text"
+              id="firstname"
+              name="firstname"
+              placeholder="first name"
+              v-model="form.firstname"
+              required
+            />
             <div class="date-and-gender">
               <input
                 type="date"
                 id="birthdate"
                 name="birthdate"
                 placeholder="birth date"
+                v-model="form.birthdate"
                 required
               />
               <div class="radio-gender">
                 <label class="custom-radio">
-                  <input type="radio" id="female" name="gender" value="female" /> female
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="female"
+                    v-model="form.gender"
+                    required
+                  />
+                  female
                 </label>
                 <label class="custom-radio">
-                  <input type="radio" id="male" name="gender" value="male" /> male
+                  <input type="radio" id="male" name="gender" value="male" v-model="form.gender" />
+                  male
                 </label>
                 <label class="custom-radio">
-                  <input type="radio" id="diverse" name="gender" value="diverse" /> diverse
+                  <input
+                    type="radio"
+                    id="diverse"
+                    name="gender"
+                    value="diverse"
+                    v-model="form.gender"
+                  />
+                  diverse
                 </label>
               </div>
             </div>
@@ -58,7 +104,7 @@
               name="email"
               placeholder="e-mail"
               size="30"
-              pattern=".+@example\.com"
+              v-model="form.email"
               required
             />
             <input
@@ -66,10 +112,17 @@
               id="phone"
               name="phone"
               placeholder="phone number"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              v-model="form.phone"
               required
             />
-            <input type="text" id="street" name="street" placeholder="street name" required />
+            <input
+              type="text"
+              id="street"
+              name="street"
+              placeholder="street name"
+              v-model="form.street"
+              required
+            />
             <div class="flex-postal-city-country">
               <input
                 type="number"
@@ -78,16 +131,17 @@
                 placeholder="Postal"
                 min="5"
                 max="5"
+                v-model="form.postalcode"
                 required
               />
-              <input type="text" id="city" name="city" placeholder="City" />
-              <select name="country" id="country">
+              <input type="text" id="city" name="city" placeholder="City" v-model="form.city" />
+              <select name="country" id="country" v-model="form.country" required>
                 <option value="DE">Deutschland</option>
               </select>
             </div>
           </div>
         </form>
-        <button class="btn-style-1" type="submit" @click="$router.push('/category')">Next</button>
+        <button class="btn-style-1" type="button" @click="goToCategory">Next</button>
       </main>
     </div>
   </body>
@@ -97,11 +151,63 @@
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 
 export default {
+  created() {
+    this.saveData()
+  },
   data() {
     return {
+      users: [],
+      apiURL: 'http://localhost:3000',
       chooseUsername: 'Choose your username',
       choosePassword: 'Choose a password',
-      createAcc: 'Create account'
+      createAcc: 'Create account',
+      form: {
+        username: '',
+        password: '',
+        repeatPassword: '',
+        lastname: '',
+        firstname: '',
+        birthdate: '',
+        gender: '',
+        email: '',
+        phone: '',
+        street: '',
+        postalcode: null,
+        city: '',
+        country: 'DE'
+      }
+    }
+  },
+  methods: {
+    goToCategory() {
+      if (Object.values(this.form).some((value) => value === '')) {
+        alert('Please fill out all fields.')
+      } else {
+        this.saveData()
+        this.$router.push('/category')
+      }
+    },
+    saveData() {
+      fetch(this.apiURL + '/register', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(this.form)
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Network response was not OK')
+          }
+        })
+        .then((jsonData) => {
+          console.log('Data saved successfully:', jsonData)
+        })
+        .catch((error) => {
+          console.error('Error saving data:', error)
+        })
     }
   },
   components: {

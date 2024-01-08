@@ -38,6 +38,7 @@
 <script>
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 import { useCategoryStore } from '@/stores/category.js'
+// import CategoryData from '@components/CategoryData.vue'
 export default {
   data() {
     return {

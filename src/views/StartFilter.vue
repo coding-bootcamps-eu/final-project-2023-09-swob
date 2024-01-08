@@ -10,7 +10,7 @@
         <img src="@/assets/icons/steps03.svg" alt="step3" class="svg-icon" />
         <article>
           <h1 v-html="where"></h1>
-          <select name="location" id="location">
+          <select v-model="filtersStore.location" name="location" id="location">
             <option value="berlin">Berlin</option>
             <option value="hannover">Hannover</option>
             <option value="dusseldorf">Düsseldorf</option>
@@ -28,6 +28,7 @@
             <option value="hamburg">Hamburg</option>
             <option value="cologne">Köln</option>
             <option value="frankfurt">Frankfurt am Main</option>
+            <option value="karlsruhe">Karlsruhe</option>
             <option value="stuttgart">Stuttgart</option>
             <option value="dortmund">Dortmund</option>
             <option value="essen">Essen</option>
@@ -46,46 +47,97 @@
           <h1 v-html="what"></h1>
           <div class="type-of-employment">
             <label for="temporary">
-              <input type="radio" id="temporary" name="employmentType" value="temporary" />
+              <input
+                type="radio"
+                id="temporary"
+                name="employmentType"
+                value="temporary"
+                v-model="filtersStore.employmentType"
+              />
               Temporary
             </label>
 
             <label for="open-end">
-              <input type="radio" id="open-end" name="employmentType" value="open-end" /> Open-end
+              <input
+                type="radio"
+                id="open-end"
+                name="employmentType"
+                value="open-end"
+                v-model="filtersStore.employmentType"
+              />
+              Open-end
             </label>
 
             <label for="freelancer">
-              <input type="radio" id="freelancer" name="employmentType" value="freelancer" />
+              <input
+                type="radio"
+                id="freelancer"
+                name="employmentType"
+                value="freelancer"
+                v-model="filtersStore.employmentType"
+              />
               Freelancer
             </label>
 
             <label for="trainee">
-              <input type="radio" id="trainee" name="employmentType" value="trainee" /> Trainee
+              <input
+                type="radio"
+                id="trainee"
+                name="employmentType"
+                value="trainee"
+                v-model="filtersStore.employmentType"
+              />
+              Trainee
             </label>
 
             <label for="part-time">
-              <input type="radio" id="part-time" name="employmentType" value="part-time" />
+              <input
+                type="radio"
+                id="part-time"
+                name="employmentType"
+                value="part-time"
+                v-model="filtersStore.employmentType"
+              />
               Part-time
             </label>
 
             <label for="fulltime">
-              <input type="radio" id="fulltime" name="employmentType" value="fulltime" /> Fulltime
+              <input
+                type="radio"
+                id="fulltime"
+                name="employmentType"
+                value="fulltime"
+                v-model="filtersStore.employmentType"
+              />
+              Fulltime
             </label>
 
             <label for="studentjob">
-              <input type="radio" id="studentjob" name="employmentType" value="studentjob" />
+              <input
+                type="radio"
+                id="studentjob"
+                name="employmentType"
+                value="studentjob"
+                v-model="filtersStore.employmentType"
+              />
               Studentjob
             </label>
 
             <label for="minijob">
-              <input type="radio" id="minijob" name="employmentType" value="minijob" />
+              <input
+                type="radio"
+                id="minijob"
+                name="employmentType"
+                value="minijob"
+                v-model="filtersStore.employmentType"
+              />
               Mini-/Midijob
             </label>
           </div>
         </article>
         <article>
           <h1 v-html="educationLevel"></h1>
-          <select name="education" id="education">
+          <select v-model="filtersStore.education" name="education" id="education">
             <option value="Abitur">High school diploma</option>
             <option value="Fachabitur">Technical college entrance qualification</option>
             <option value="Student">Student</option>
@@ -103,15 +155,36 @@
           <h1 v-html="howWork"></h1>
           <div class="how-would-you-like-to-work">
             <label for="office">
-              <input type="radio" id="office" name="howToWork" value="office" /> Office
+              <input
+                type="radio"
+                id="office"
+                name="office"
+                value="office"
+                v-model="filtersStore.howWork"
+              />
+              Office
             </label>
 
             <label for="remote">
-              <input type="radio" id="remote" name="howToWork" value="remote" /> Remote
+              <input
+                type="radio"
+                id="remote"
+                name="remote"
+                value="remote"
+                v-model="filtersStore.howWork"
+              />
+              Remote
             </label>
 
             <label for="hybrid">
-              <input type="radio" id="hybrid" name="howToWork" value="hybrid" /> Hybrid
+              <input
+                type="radio"
+                id="hybrid"
+                name="hybrid"
+                value="hybrid"
+                v-model="filtersStore.howWork"
+              />
+              Hybrid
             </label>
           </div>
           <h1 v-html="swobFrom"></h1>
@@ -135,7 +208,7 @@
             <p>(multiple selections possible)</p>
           </div>
           <div class="language-options">
-            <select name="languages" id="languages">
+            <select name="languages" id="languages" v-model="filtersStore.language">
               <option value="German">German</option>
               <option value="English">English</option>
               <option value="French">French</option>
@@ -143,7 +216,7 @@
             </select>
           </div>
         </article>
-        <button class="btn-style-1" @click="$router.push('/swipe')">Confirm</button>
+        <button class="btn-style-1" @click="confirmFilters">Confirm</button>
       </main>
     </div>
   </body>
@@ -151,15 +224,126 @@
 
 <script>
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
+import { useFiltersStore } from '@/stores/filter.js'
+
 export default {
   data() {
     return {
+      filtersStore: useFiltersStore(),
+      employmentTypes: [
+        { label: 'Temporary', value: 'temporary', name: 'employmentType' },
+        { label: 'Open-end', value: 'open-end', name: 'employmentType' }
+      ],
       where: 'Where do you search?',
       what: 'What type of employment are you looking for?',
       educationLevel: 'What is your level of education?',
       howWork: 'How would you like to work?',
       swobFrom: 'Do you want a SWOB from employers or recruitment agencies?',
-      language: 'Which language would you like to work in?'
+      language: 'Which language would you like to work in?',
+      isLoggedIn: false,
+      currentUser: JSON.parse(sessionStorage.getItem('credentials'))
+    }
+  },
+  created() {
+    this.loadFilters()
+    this.checkLoggedUser()
+  },
+  methods: {
+    loadFilters() {
+      const storedFilters = JSON.parse(sessionStorage.getItem('filters'))
+      if (storedFilters) {
+        this.filtersStore.initFilter(storedFilters)
+      } else {
+        fetch('http://localhost:3000/filter/')
+          .then((response) => response.json())
+          .then((jsonData) => {
+            this.filtersStore.initFilter(jsonData)
+            sessionStorage.setItem('filters', JSON.stringify(jsonData))
+          })
+          .catch((error) => {
+            console.error('Load Filters failed:', error)
+          })
+      }
+    },
+    checkLoggedUser() {
+      fetch('http://localhost:3000/users/')
+        .then((response) => response.json())
+        .then((jsonData) => {
+          jsonData.forEach((user) => {
+            if (this.currentUser.username === user.username) {
+              this.isLoggedIn = true
+              user.password = this.currentUser.password
+              sessionStorage.setItem('credentials', JSON.stringify(user))
+              this.currentUser = JSON.parse(sessionStorage.getItem('credentials'))
+            }
+          })
+        })
+        .catch((error) => {
+          console.error('Load users failed:', error)
+        })
+    },
+    confirmFilters() {
+      const selectedLocation = this.filtersStore.location
+      const selectedEmploymentType = this.filtersStore.employmentType
+      const selectedEducation = this.filtersStore.education
+      const selectedHowWork = this.filtersStore.howWork
+
+      console.log(
+        'Selected Filters:',
+        selectedLocation,
+        selectedEmploymentType,
+        selectedEducation,
+        selectedHowWork
+      )
+
+      this.$nextTick(() => {
+        const storedFilters = JSON.parse(sessionStorage.getItem('filters')) || []
+        storedFilters.push({
+          location: selectedLocation,
+          employmentType: selectedEmploymentType,
+          education: selectedEducation,
+          howWork: selectedHowWork
+        })
+        sessionStorage.setItem('filters', JSON.stringify(storedFilters))
+        console.log('Filters stored in sessionStorage:', storedFilters)
+      })
+      const selectedFilters = {
+        location: selectedLocation,
+        employmentType: selectedEmploymentType,
+        education: selectedEducation,
+        howWork: selectedHowWork
+      }
+
+      // Versuche, Daten an die API zu senden
+      fetch('http://localhost:3000/filter/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(selectedFilters)
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          return response.json()
+        })
+        .then((data) => {
+          console.log('API Response:', data)
+
+          this.$router.push('/swipe')
+        })
+        .catch((error) => {
+          console.error('API Request failed. Data will be stored locally:', error)
+
+          this.storeFiltersLocally(selectedFilters)
+          this.$router.push('/swipe')
+        })
+    },
+    storeFiltersLocally(filters) {
+      const storedFilters = JSON.parse(sessionStorage.getItem('filters')) || []
+      storedFilters.push(filters)
+      sessionStorage.setItem('filters', JSON.stringify(storedFilters))
     }
   },
   components: {

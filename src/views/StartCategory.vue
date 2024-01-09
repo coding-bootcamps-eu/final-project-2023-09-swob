@@ -23,7 +23,7 @@
               <section class="content">
                 <router-link
                   :to="{
-                    name: 'SwipeScreen',
+                    name: 'filterdetails',
                     query: { category: item.id, categoryName: item.caption }
                   }"
                   class="button"

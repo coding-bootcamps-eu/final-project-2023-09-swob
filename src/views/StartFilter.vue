@@ -230,10 +230,6 @@ export default {
   data() {
     return {
       filtersStore: useFiltersStore(),
-      employmentTypes: [
-        { label: 'Temporary', value: 'temporary', name: 'employmentType' },
-        { label: 'Open-end', value: 'open-end', name: 'employmentType' }
-      ],
       where: 'Where do you search?',
       what: 'What type of employment are you looking for?',
       educationLevel: 'What is your level of education?',
@@ -241,7 +237,7 @@ export default {
       swobFrom: 'Do you want a SWOB from employers or recruitment agencies?',
       language: 'Which language would you like to work in?',
       isLoggedIn: false,
-      currentUser: JSON.parse(sessionStorage.getItem('credentials'))
+      currentUser: null // Initialize currentUser to null
     }
   },
   created() {
@@ -250,37 +246,20 @@ export default {
   },
   methods: {
     loadFilters() {
-      const storedFilters = JSON.parse(sessionStorage.getItem('filters'))
-      if (storedFilters) {
-        this.filtersStore.initFilter(storedFilters)
-      } else {
-        fetch('http://localhost:3000/filter/')
-          .then((response) => response.json())
-          .then((jsonData) => {
-            this.filtersStore.initFilter(jsonData)
-            sessionStorage.setItem('filters', JSON.stringify(jsonData))
-          })
-          .catch((error) => {
-            console.error('Load Filters failed:', error)
-          })
+      let storedFilters = JSON.parse(sessionStorage.getItem('filters'))
+
+      if (!storedFilters || !storedFilters.length) {
+        return
       }
     },
     checkLoggedUser() {
-      fetch('http://localhost:3000/users/')
-        .then((response) => response.json())
-        .then((jsonData) => {
-          jsonData.forEach((user) => {
-            if (this.currentUser.username === user.username) {
-              this.isLoggedIn = true
-              user.password = this.currentUser.password
-              sessionStorage.setItem('credentials', JSON.stringify(user))
-              this.currentUser = JSON.parse(sessionStorage.getItem('credentials'))
-            }
-          })
-        })
-        .catch((error) => {
-          console.error('Load users failed:', error)
-        })
+      // Load the user data from sessionStorage
+      this.currentUser = JSON.parse(sessionStorage.getItem('credentials'))
+
+      // Check if the user is logged in
+      if (this.currentUser) {
+        this.isLoggedIn = true
+      }
     },
     confirmFilters() {
       const selectedLocation = this.filtersStore.location
@@ -296,26 +275,23 @@ export default {
         selectedHowWork
       )
 
-      this.$nextTick(() => {
-        const storedFilters = JSON.parse(sessionStorage.getItem('filters')) || []
-        storedFilters.push({
-          location: selectedLocation,
-          employmentType: selectedEmploymentType,
-          education: selectedEducation,
-          howWork: selectedHowWork
-        })
-        sessionStorage.setItem('filters', JSON.stringify(storedFilters))
-        console.log('Filters stored in sessionStorage:', storedFilters)
-      })
+      // Ensure that currentUser is defined before accessing its properties
+      if (!this.currentUser) {
+        console.error('User not logged in. Unable to confirm filters.')
+        return
+      }
+
+      const userId = this.currentUser.id
+
       const selectedFilters = {
+        userId: userId,
         location: selectedLocation,
         employmentType: selectedEmploymentType,
         education: selectedEducation,
         howWork: selectedHowWork
       }
 
-      // Versuche, Daten an die API zu senden
-      fetch('http://localhost:3000/filter/', {
+      fetch('http://localhost:3000/filterdetails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -330,20 +306,12 @@ export default {
         })
         .then((data) => {
           console.log('API Response:', data)
-
           this.$router.push('/swipe')
         })
         .catch((error) => {
-          console.error('API Request failed. Data will be stored locally:', error)
-
-          this.storeFiltersLocally(selectedFilters)
+          console.error('API Request failed:', error)
           this.$router.push('/swipe')
         })
-    },
-    storeFiltersLocally(filters) {
-      const storedFilters = JSON.parse(sessionStorage.getItem('filters')) || []
-      storedFilters.push(filters)
-      sessionStorage.setItem('filters', JSON.stringify(storedFilters))
     }
   },
   components: {

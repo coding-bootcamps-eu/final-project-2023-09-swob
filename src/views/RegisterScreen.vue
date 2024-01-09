@@ -188,7 +188,8 @@ export default {
       }
     },
     saveData() {
-      fetch(this.apiURL + '/register', {
+      console.log('Sending data to the server:', this.form)
+      fetch(this.apiURL + '/users/', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

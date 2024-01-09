@@ -1,4 +1,4 @@
-@media (min-width: 37.5rem) {
+/* @media (min-width: 37.5rem) {
   main {
     max-width: 37.5rem;
   }
@@ -8,7 +8,7 @@
   main {
     max-width: 50rem;
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -91,5 +91,17 @@ footer > a {
   margin: 0;
 }
 
-button {
+@media screen and (min-width: 800px) {
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

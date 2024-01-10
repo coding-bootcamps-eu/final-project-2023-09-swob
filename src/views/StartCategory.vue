@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { API_URL } from '@/utils/config.js'
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 import { useCategoryStore } from '@/stores/category.js'
 // import CategoryData from '@components/CategoryData.vue'
@@ -65,7 +66,7 @@ export default {
   },
   methods: {
     loadCategory() {
-      fetch('https://23-september.swob.api.cbe.uber.space/category')
+      fetch(API_URL + '/category')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -82,7 +83,7 @@ export default {
         })
     },
     checkLoggedUser() {
-      fetch('https://23-september.swob.api.cbe.uber.space/users')
+      fetch(API_URL + '/users')
         .then((response) => {
           if (response.ok) {
             return response.json()

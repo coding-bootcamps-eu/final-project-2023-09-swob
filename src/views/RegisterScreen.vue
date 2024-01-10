@@ -44,6 +44,7 @@
             <p>fill the details to create your swob card</p>
           </div>
           <div class="personal-information">
+            <label for="lastname" v-html="enterLastname"></label>
             <input
               type="text"
               id="lastname"
@@ -52,6 +53,7 @@
               v-model="form.lastname"
               required
             />
+            <label for="firstname" v-html="enterFirstname"></label>
             <input
               type="text"
               id="firstname"
@@ -61,14 +63,17 @@
               required
             />
             <div class="date-and-gender">
-              <input
-                type="date"
-                id="birthdate"
-                name="birthdate"
-                placeholder="birth date"
-                v-model="form.birthdate"
-                required
-              />
+              <div class="birthdate">
+                <label for="birthdate" v-html="enterBirthdate"></label>
+                <input
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                  placeholder="birth date"
+                  v-model="form.birthdate"
+                  required
+                />
+              </div>
               <div class="radio-gender">
                 <label class="custom-radio">
                   <input
@@ -97,24 +102,26 @@
                 </label>
               </div>
             </div>
-
+            <label for="email" v-html="enterEmail"></label>
             <input
-              type="text"
+              type="email"
               id="email"
               name="email"
-              placeholder="e-mail"
+              placeholder="email address"
               size="30"
               v-model="form.email"
               required
             />
+            <label for="phone" v-html="enterPhoneNumber"></label>
             <input
               type="tel"
               id="phone"
               name="phone"
-              placeholder="+(123) - 456-78-90"
+              placeholder="phone number"
               v-model="form.phone"
               required
             />
+            <label for="street" v-html="enterStreetName"></label>
             <input
               type="text"
               id="street"
@@ -151,15 +158,18 @@
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 
 export default {
-  // created() {
-  //   this.saveData()
-  // },
   data() {
     return {
       users: [],
       apiURL: 'http://localhost:3000',
       chooseUsername: 'Choose your username',
       choosePassword: 'Choose a password',
+      enterBirthdate: 'Birthdate',
+      enterLastname: 'Last name',
+      enterFirstname: 'First name',
+      enterEmail: 'E-Mail',
+      enterPhoneNumber: 'Phone Number',
+      enterStreetName: 'Street name',
       createAcc: 'Create account',
       form: {
         username: '',
@@ -181,24 +191,41 @@ export default {
   methods: {
     validatePassword() {
       if (this.form.password !== this.form.repeatPassword) {
-        alert('Passwords do not match')
+        alert('Passwords do not match.')
       }
-      // validatePhoneNumber() {
-      //   const phoneNumberPattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g
-      //   if (!phoneNumberPattern.test(this.form.phone)) {
-      //     alert('Invalid phone number.')
-      //   }
-      // //},
-      // validateEmail() {
-      //   let mail = document.getElementById('email').value
-      //   let regx = /^([a-zA-Z0-9._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
-      //   if (regx.text(mail)) {
-      //     return true
-      //   } else {
-      //     alert('Invalid Email Address.')
-      //     return false
-      //   }
-      // }
+    },
+    validatePhoneNumber() {
+      const phoneNumberPattern = /^[+]?[0-9]{6,14}$/
+      const phoneNumber = this.form.phone.trim() //Entfernen von Leerzeichen an Anfang und Ende
+      console.log('Original Phone:', this.form.phone)
+      console.log('Trimmed Phone:', phoneNumber)
+      if (phoneNumberPattern.test(phoneNumber)) {
+        return true
+      } else {
+        alert('Invalid phone number.')
+        return false
+      }
+    },
+    validateEmail() {
+      let mail = document.getElementById('email').value
+      let regx = /^([a-zA-Z0-9._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+      if (regx.test(mail)) {
+        return true
+      } else {
+        alert('Invalid Email Address.')
+        return false
+      }
+    },
+    validateBirthdate() {
+      const today = new Date()
+      const minAge = 18
+      const inputDate = new Date(this.form.birthdate)
+      const age = today.getFullYear() - inputDate.getFullYear()
+      if (age < minAge) {
+        alert('You must be at least 18 years old')
+        return false
+      }
+      return true
     },
     isUsernameUnique() {
       let isUnique = true
@@ -231,10 +258,12 @@ export default {
         alert('Please fill out all fields.')
       } else {
         this.validatePassword()
-        // this.validatePhoneNumber()
-        //this.validateEmail()
-        this.validatePassword()
-        if (this.form.password === this.form.repeatPassword) {
+        if (
+          this.validatePhoneNumber() &&
+          this.validateEmail() &&
+          this.validateBirthdate() &&
+          this.form.password === this.form.repeatPassword
+        ) {
           this.isUsernameUnique()
         }
       }

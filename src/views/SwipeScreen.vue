@@ -110,10 +110,11 @@ import { useOfferStore } from '@/stores/offers.js'
 import { useCompanyStore } from '@/stores/company.js'
 import { useFiltersStore } from '@/stores/filter.js'
 import { useModalStore } from '@/stores/modal.js'
+import HamburgerMenu from '@/components/HamburgerMenu.vue'
 import blancaImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import mimiImage from '@/assets/workplaces/annie-spratt-FSFfEQkd1sc-unsplash.jpeg'
 import giulioImage from '@/assets/workplaces/redd-f-5U_28ojjgms-unsplash.jpeg'
-import HamburgerMenu from '@/components/HamburgerMenu.vue'
+
 export default {
   setup() {
     const filtersStore = useFiltersStore()
@@ -124,7 +125,7 @@ export default {
     const sessionFilters = JSON.parse(sessionStorage.getItem('filters'))
 
     if (Array.isArray(sessionFilters) && sessionFilters.length > 0) {
-      filtersStore.howWork = sessionFilters[0].howWork
+      Object.assign(filtersStore.filters, sessionFilters[0])
     }
 
     return { filtersStore, offersStore, companysStore, modalStore }
@@ -217,6 +218,9 @@ export default {
     },
     swipeLeft() {
       this.currentIndex = (this.currentIndex + 1) % this.profiles.length
+      if (this.currentIndex === this.offersStore.offers.length) {
+        this.currentIndex = 0
+      }
     },
     swipeRight() {
       this.currentIndex = (this.currentIndex - 1 + this.profiles.length) % this.profiles.length

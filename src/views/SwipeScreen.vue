@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     loadOffers() {
-      fetch('http://localhost:3000/offers/')
+      fetch('https://23-september.swob.api.cbe.uber.space/offers')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -182,7 +182,7 @@ export default {
         })
     },
     loadCompanys() {
-      fetch('http://localhost:3000/companies/')
+      fetch('https://23-september.swob.api.cbe.uber.space/companies')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -203,7 +203,7 @@ export default {
       }
     },
     loadMatches() {
-      fetch('http://localhost:3000/matches/')
+      fetch('https://23-september.swob.api.cbe.uber.space/matches')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -247,13 +247,16 @@ export default {
       }
       console.log(this.matches[this.currentIndex].id)
 
-      return fetch('http://localhost:3000/matches/' + this.matches[this.currentIndex].id, {
-        method: 'PUT',
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: JSON.stringify(changeMatch)
-      })
+      return fetch(
+        'https://23-september.swob.api.cbe.uber.space/matches' + this.matches[this.currentIndex].id,
+        {
+          method: 'PUT',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(changeMatch)
+        }
+      )
         .then((response) => {
           if (response.ok) {
             return Promise.resolve() // Resolve the promise if the request was successful

@@ -237,7 +237,7 @@ export default {
       swobFrom: 'Do you want a SWOB from employers or recruitment agencies?',
       language: 'Which language would you like to work in?',
       isLoggedIn: false,
-      currentUser: null // Initialize currentUser to null
+      currentUser: null
     }
   },
   created() {
@@ -253,10 +253,8 @@ export default {
       }
     },
     checkLoggedUser() {
-      // Load the user data from sessionStorage
       this.currentUser = JSON.parse(sessionStorage.getItem('credentials'))
 
-      // Check if the user is logged in
       if (this.currentUser) {
         this.isLoggedIn = true
       }
@@ -275,7 +273,6 @@ export default {
         selectedHowWork
       )
 
-      // Ensure that currentUser is defined before accessing its properties
       if (!this.currentUser) {
         console.error('User not logged in. Unable to confirm filters.')
         return
@@ -291,7 +288,7 @@ export default {
         howWork: selectedHowWork
       }
 
-      fetch('http://localhost:3000/filterdetails', {
+      fetch('https://23-september.swob.api.cbe.uber.space/filterdetails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -315,7 +312,6 @@ export default {
               employmentType: selectedEmploymentType,
               education: selectedEducation,
               howWork: selectedHowWork
-              // Weitere Filterdaten hier hinzufügen
             }
           })
         })
@@ -330,7 +326,6 @@ export default {
               employmentType: selectedEmploymentType,
               education: selectedEducation,
               howWork: selectedHowWork
-              // Weitere Filterdaten hier hinzufügen
             }
           })
         })
@@ -339,7 +334,6 @@ export default {
       const selectedCategory = this.$route.query.category
       const selectedCategoryName = this.$route.query.categoryName
 
-      // Verwenden Sie selectedCategory und selectedCategoryName nach Bedarf
       console.log('Selected Category:', selectedCategory, selectedCategoryName)
     }
   },

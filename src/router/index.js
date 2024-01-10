@@ -56,6 +56,11 @@ const router = createRouter({
       path: '/personalprofile',
       name: 'personalProfile',
       component: PersonalProfile
+    },
+    {
+      path: '/match/:companyId',
+      name: 'match',
+      component: MatchScreen
     }
   ]
 })

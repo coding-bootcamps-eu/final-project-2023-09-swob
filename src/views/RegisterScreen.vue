@@ -141,7 +141,7 @@
             </div>
           </div>
         </form>
-        <button class="btn-style-1" type="button" @click="goToCategory">Next</button>
+        <button class="btn-style-1" type="button" @click="goToCategory">Sign Up</button>
       </main>
     </div>
   </body>
@@ -179,12 +179,20 @@ export default {
     }
   },
   methods: {
+    validatePassword() {
+      if (this.form.password !== this.form.repeatPassword) {
+        alert('Passwords do not match')
+      }
+    },
     goToCategory() {
       if (Object.values(this.form).some((value) => value === '')) {
         alert('Please fill out all fields.')
       } else {
-        this.saveData()
-        this.$router.push('/category')
+        this.validatePassword()
+        if (this.form.password === this.form.repeatPassword) {
+          this.saveData()
+          this.$router.push('/category')
+        }
       }
     },
     saveData() {

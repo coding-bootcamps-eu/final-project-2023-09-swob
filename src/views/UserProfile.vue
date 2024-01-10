@@ -68,7 +68,9 @@
 </template>
 
 <script>
+
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
+
 export default {
   components: {
     HamburgerMenu

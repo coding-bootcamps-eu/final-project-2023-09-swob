@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     loadCategory() {
-      fetch('http://localhost:3000/category/')
+      fetch('https://23-september.swob.api.cbe.uber.space/category')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -80,7 +80,7 @@ export default {
         })
     },
     checkLoggedUser() {
-      fetch('http://localhost:3000/users/')
+      fetch('https://23-september.swob.api.cbe.uber.space/users')
         .then((response) => {
           if (response.ok) {
             return response.json()

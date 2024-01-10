@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useCompanyStore = defineStore('companyStore', {
   state() {
-    return { companys: [{ id: '', logo: '', name: '' }] }
+    return { companys: [] }
   },
   actions: {
     initCompany(company) {

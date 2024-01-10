@@ -27,6 +27,7 @@
                     query: { category: item.id, categoryName: item.caption }
                   }"
                   class="button"
+                  @click="setSelectedCategory(item)"
                 >
                   <p class="card-title">{{ item.caption }}</p>
                 </router-link>
@@ -97,6 +98,12 @@ export default {
             }
           })
         })
+    },
+    setSelectedCategory(selectedCategory) {
+      this.$router.push({
+        name: 'filterdetails',
+        query: { category: selectedCategory.id, categoryName: selectedCategory.caption }
+      })
     }
   },
 

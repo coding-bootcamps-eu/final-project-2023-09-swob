@@ -216,7 +216,7 @@
             </select>
           </div>
         </article>
-        <button class="btn-style-1" @click="confirmFilters">Confirm</button>
+        <button @click="confirmFilters" class="btn-style-1">confirm</button>
       </main>
     </div>
   </body>
@@ -306,12 +306,41 @@ export default {
         })
         .then((data) => {
           console.log('API Response:', data)
-          this.$router.push('/swipe')
+          this.$router.push({
+            name: 'SwipeScreen',
+            query: {
+              category: this.$route.query.category,
+              categoryName: this.$route.query.categoryName,
+              location: selectedLocation,
+              employmentType: selectedEmploymentType,
+              education: selectedEducation,
+              howWork: selectedHowWork
+              // Weitere Filterdaten hier hinzufügen
+            }
+          })
         })
         .catch((error) => {
           console.error('API Request failed:', error)
-          this.$router.push('/swipe')
+          this.$router.push({
+            name: 'SwipeScreen',
+            query: {
+              category: this.$route.query.category,
+              categoryName: this.$route.query.categoryName,
+              location: selectedLocation,
+              employmentType: selectedEmploymentType,
+              education: selectedEducation,
+              howWork: selectedHowWork
+              // Weitere Filterdaten hier hinzufügen
+            }
+          })
         })
+    },
+    loadSelectedCategory() {
+      const selectedCategory = this.$route.query.category
+      const selectedCategoryName = this.$route.query.categoryName
+
+      // Verwenden Sie selectedCategory und selectedCategoryName nach Bedarf
+      console.log('Selected Category:', selectedCategory, selectedCategoryName)
     }
   },
   components: {

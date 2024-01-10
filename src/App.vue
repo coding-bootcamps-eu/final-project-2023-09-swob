@@ -20,6 +20,15 @@ export default {
     }
 
     return { modalStore, closeModal }
+  },
+  watch: {
+    'modalStore.open'(currentValue) {
+      if (currentValue === true) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    }
   }
 }
 </script>

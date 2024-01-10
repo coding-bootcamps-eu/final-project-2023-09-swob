@@ -225,6 +225,7 @@
 <script>
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 import { useFiltersStore } from '@/stores/filter.js'
+import { API_URL } from '@/utils/config.js'
 
 export default {
   data() {
@@ -291,7 +292,7 @@ export default {
         howWork: selectedHowWork
       }
 
-      fetch('http://localhost:3000/filterdetails', {
+      fetch(API_URL + '/filterdetails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

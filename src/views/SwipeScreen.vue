@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import { API_URL } from '@/utils/config.js'
 import { useOfferStore } from '@/stores/offers.js'
 import { useCompanyStore } from '@/stores/company.js'
 import { useFiltersStore } from '@/stores/filter.js'
@@ -163,7 +164,7 @@ export default {
   },
   methods: {
     loadOffers() {
-      fetch('https://23-september.swob.api.cbe.uber.space/offers')
+      fetch(API_URL + '/offers')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -182,7 +183,7 @@ export default {
         })
     },
     loadCompanys() {
-      fetch('https://23-september.swob.api.cbe.uber.space/companies')
+      fetch(API_URL + '/companies')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -203,7 +204,7 @@ export default {
       }
     },
     loadMatches() {
-      fetch('https://23-september.swob.api.cbe.uber.space/matches')
+      fetch(API_URL + '/matches')
         .then((response) => {
           if (response.ok) {
             return response.json()
@@ -247,16 +248,13 @@ export default {
       }
       console.log(this.matches[this.currentIndex].id)
 
-      return fetch(
-        'https://23-september.swob.api.cbe.uber.space/matches' + this.matches[this.currentIndex].id,
-        {
-          method: 'PUT',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(changeMatch)
-        }
-      )
+      return fetch(API_URL + '/offers' + this.matches[this.currentIndex].id, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(changeMatch)
+      })
         .then((response) => {
           if (response.ok) {
             return Promise.resolve() // Resolve the promise if the request was successful
@@ -304,13 +302,6 @@ export default {
     toggleMoreInfo(description) {
       this.modalStore.open = true
       this.modalStore.content = description
-
-      this.showMoreInfo = !this.showMoreInfo
-      if (this.showMoreInfo) {
-        document.body.style.overflow = 'hidden'
-      } else {
-        document.body.style.overflow = ''
-      }
     },
     openLightbox(image) {
       this.lightboxImage = image

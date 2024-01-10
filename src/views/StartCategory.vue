@@ -1,43 +1,45 @@
 <template>
-  <header>
-    <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
-    <HamburgerMenu />
-  </header>
-  <main>
-    <div v-if="showBackupData">
-      <h1>Mensch, es ist ein Fallback</h1>
-    </div>
-    <div v-else>
-      <div v-if="isLoggedIn">
-        <h1>Welcome back, {{ currentUser.firstname }}</h1>
-        <h2 v-html="whatKindOfJobs"></h2>
+  <div class="bg-fixed">
+    <header>
+      <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
+      <HamburgerMenu />
+    </header>
+    <main>
+      <div v-if="showBackupData">
+        <h1>Mensch, es ist ein Fallback</h1>
       </div>
       <div v-else>
-        <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
-        <h1 v-html="whatKindOfJobs"></h1>
+        <div v-if="isLoggedIn">
+          <h1>Welcome back, {{ currentUser.firstname }}</h1>
+          <h2 v-html="whatKindOfJobs"></h2>
+        </div>
+        <div v-else>
+          <img src="@/assets/icons/steps01.svg" alt="step1" class="svg-icon" />
+          <h1 v-html="whatKindOfJobs"></h1>
+        </div>
+        <ul>
+          <li v-for="item in categoryStore.categorys" :key="item.id">
+            <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
+              <div class="overlay">
+                <section class="content">
+                  <router-link
+                    :to="{
+                      name: 'filterdetails',
+                      query: { category: item.id, categoryName: item.caption }
+                    }"
+                    class="button"
+                    @click="setSelectedCategory(item)"
+                  >
+                    <p class="card-title">{{ item.caption }}</p>
+                  </router-link>
+                </section>
+              </div>
+            </article>
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li v-for="item in categoryStore.categorys" :key="item.id">
-          <article class="card" :style="{ 'background-image': 'url(' + item.imageSrc + ')' }">
-            <div class="overlay">
-              <section class="content">
-                <router-link
-                  :to="{
-                    name: 'filterdetails',
-                    query: { category: item.id, categoryName: item.caption }
-                  }"
-                  class="button"
-                  @click="setSelectedCategory(item)"
-                >
-                  <p class="card-title">{{ item.caption }}</p>
-                </router-link>
-              </section>
-            </div>
-          </article>
-        </li>
-      </ul>
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>

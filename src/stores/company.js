@@ -2,11 +2,27 @@ import { defineStore } from 'pinia'
 
 export const useCompanyStore = defineStore('companyStore', {
   state() {
-    return { companys: [{ id: '', logo: '', name: '' }] }
+    return { companys: [] }
   },
   actions: {
-    initCompany(company) {
-      this.companys = company
+    initCompany(companies) {
+      this.companys = companies
+    },
+    async loadCompanyById(companyId) {
+      try {
+        const response = await fetch(
+          `https://23-september.swob.api.cbe.uber.space/companies/${companyId}`
+        )
+        if (!response.ok) {
+          throw new Error('Failed to fetch company data')
+        }
+
+        const companyData = await response.json()
+        return companyData
+      } catch (error) {
+        console.error(error)
+        throw error // Handle error as needed
+      }
     }
   }
 })

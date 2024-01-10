@@ -92,12 +92,14 @@
             <!-- Wenn ein match successful ist, routet er zum MatchScreen -->
             <router-link
               :to="{
-                name: 'match'
+                name: 'match',
+                params: { companyId: companysStore.companys[currentIndex].id }
               }"
               @click="swipeRight"
               class="button"
-              ><img class="icon-green" src="@/assets/icons/yes.png" alt="Swipe Right Icon"
-            /></router-link>
+            >
+              <img class="icon-green" src="@/assets/icons/yes.png" alt="Swipe Right Icon" />
+            </router-link>
           </div>
         </div>
       </form>
@@ -248,6 +250,7 @@ export default {
       }
       console.log(this.matches[this.currentIndex].id)
 
+
       return fetch(API_URL + '/offers' + this.matches[this.currentIndex].id, {
         method: 'PUT',
         headers: {
@@ -257,13 +260,13 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            return Promise.resolve() // Resolve the promise if the request was successful
+            return Promise.resolve()
           } else {
-            return Promise.reject('Failed to create a match') // Reject the promise if there was an error
+            return Promise.reject('Failed to create a match')
           }
         })
         .catch((error) => {
-          return Promise.reject(error) // Propagate the error to the outer catch block
+          return Promise.reject(error)
         })
     },
     handleMouseDown(event) {

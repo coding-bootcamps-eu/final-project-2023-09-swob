@@ -99,7 +99,7 @@
             </div>
 
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               placeholder="e-mail"
@@ -111,7 +111,7 @@
               type="tel"
               id="phone"
               name="phone"
-              placeholder="phone number"
+              placeholder="+(123) - 456-78-90"
               v-model="form.phone"
               required
             />
@@ -141,7 +141,7 @@
             </div>
           </div>
         </form>
-        <button class="btn-style-1" type="button" @click="goToCategory">Sign Up</button>
+        <button class="btn-style-1" type="button" @click="goToCategory()">Sign Up</button>
       </main>
     </div>
   </body>
@@ -151,9 +151,9 @@
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 
 export default {
-  created() {
-    this.saveData()
-  },
+  // created() {
+  //   this.saveData()
+  // },
   data() {
     return {
       users: [],
@@ -183,20 +183,65 @@ export default {
       if (this.form.password !== this.form.repeatPassword) {
         alert('Passwords do not match')
       }
+      // validatePhoneNumber() {
+      //   const phoneNumberPattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g
+      //   if (!phoneNumberPattern.test(this.form.phone)) {
+      //     alert('Invalid phone number.')
+      //   }
+      // //},
+      // validateEmail() {
+      //   let mail = document.getElementById('email').value
+      //   let regx = /^([a-zA-Z0-9._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+      //   if (regx.text(mail)) {
+      //     return true
+      //   } else {
+      //     alert('Invalid Email Address.')
+      //     return false
+      //   }
+      // }
+    },
+    isUsernameUnique() {
+      let isUnique = true
+      fetch(this.apiURL + '/users')
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw new Error('Network response was not OK')
+          }
+        })
+
+        .then((jsonData) => {
+          console.log(jsonData)
+          for (const user of jsonData) {
+            if (user.username === this.form.username) {
+              isUnique = false
+            }
+          }
+          if (isUnique) {
+            this.saveData()
+            this.$router.push('/category')
+          } else {
+            alert('Username is already taken. Choose a different one.')
+          }
+        })
     },
     goToCategory() {
       if (Object.values(this.form).some((value) => value === '')) {
         alert('Please fill out all fields.')
       } else {
         this.validatePassword()
+        // this.validatePhoneNumber()
+        //this.validateEmail()
+        this.validatePassword()
         if (this.form.password === this.form.repeatPassword) {
-          this.saveData()
-          this.$router.push('/category')
+          this.isUsernameUnique()
         }
       }
     },
     saveData() {
       console.log('Sending data to the server:', this.form)
+
       fetch(this.apiURL + '/users/', {
         method: 'POST',
         headers: {

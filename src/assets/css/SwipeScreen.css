@@ -32,6 +32,7 @@ form {
 }
 .swipe-container {
   background-color: var(--clr-light-container);
+  margin-top: 5rem;
   padding: 1.25rem;
   width: 115%;
 }

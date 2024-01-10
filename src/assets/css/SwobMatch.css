@@ -15,11 +15,6 @@ body {
   min-height: 100vh;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-}
-
 main {
   overflow: hidden;
   grid-area: main;

@@ -23,6 +23,7 @@ header {
 main {
   overflow: hidden;
   grid-area: main;
+  margin-top: 5.7rem;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -38,9 +39,9 @@ main {
   backdrop-filter: blur(4px) brightness(110%);
   opacity: 0.06;
   width: 80%;
-  height: 120%;
+  height: 125%;
   position: absolute;
-  top: 23rem;
+  top: 25rem;
   left: 0;
   right: 0;
   bottom: 0;

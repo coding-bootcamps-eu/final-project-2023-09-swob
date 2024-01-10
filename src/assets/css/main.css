@@ -21,7 +21,8 @@ html {
 :root {
   --background-clr: rgb(0, 0, 0);
   --text-color: #cadee9;
-  --clr-background-show-more-content: #cadee0;
+  --clr-background-show-more-content: #cadee9;
+  --clr-accent-hr: #cadee9;
   --clr-light-container: white;
   --text-clr-on-light-background: black;
   --text-clr-on-dark-background: white;
@@ -39,7 +40,6 @@ html {
   --clr-dropdown: black;
   --clr-match-container: white;
 }
-
 
 header {
   display: flex;

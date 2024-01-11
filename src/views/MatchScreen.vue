@@ -5,19 +5,20 @@
       <HamburgerMenu />
     </header>
     <main>
-      <h1 v-html="swobAltert"></h1>
+      <h1 v-text="swobWelcome"></h1>
       <article class="match-container company-container">
         <div class="company-container-name-city-img">
           <div class="company-container-name-city">
             <h2>{{ currentCompany.name }}</h2>
             <p>{{ currentCompany.location }}</p>
           </div>
-          <img class="company" :src="currentCompany.logo" alt="Company Logo" />
+          <div class="company">
+            <img class="company-img" :src="currentCompany.logo" alt="Company Logo" />
+          </div>
         </div>
         <p class="text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quos maxime quae
-          perferendis, maiores odio. Voluptate voluptatum dicta eos laboriosam facere iure magnam
-          ipsum sed recusandae fugiat? Nihil, illo dignissimos!
+          perferendis, maiores odio. Voluptate voluptatum dicta eos.
         </p>
         <div class="company-container-links">
           <!-- <router-link>To Profile</router-link>
@@ -35,22 +36,19 @@
       <img class="logo" src="@/assets/icons/Logo-with-background.png" alt="SWOB Logo" />
       <article class="match-container user-container">
         <div class="user-container-name-city-img">
-          <img
-            class="user"
-            src="@/assets/Images/sasha-freemind-cm0eSVxdLDg-unsplash.jpeg"
-            alt="User Profile Link"
-          />
+          <div class="user-img-contain">
+            <img class="user-img" src="@/assets/Images/torben.jpg" alt="User Profile Link" />
+          </div>
           <div class="user-container-name-city">
             <h2>{{ matchedUser.firstname }} {{ matchedUser.lastname }}</h2>
             <p>{{ matchedUser.job }}</p>
             <p>{{ matchedUser.city }}</p>
           </div>
         </div>
-        <p class="about-me">About me</p>
+        <!-- <p class="about-me">About me</p> -->
         <p class="text">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem enim repellat impedit
-          hic, sapiente sint dolor cumque esse consequuntur doloremque error aut, nemo quis?
-          Corrupti sint consequuntur tempore quasi vel?
+          hic, sapiente sint dolor cumque esse consequuuntur.
         </p>
 
         <!-- <router-link>To Profile</router-link> -->
@@ -69,7 +67,6 @@
         <div class="btn-container-light">
           <img class="btn-icon-light" src="@/assets/icons/herz.png" alt="chat" />
           <router-link to="/swipe" class="btn-container-light" id="swipe">
-            <img class="btn-icon-light" src="@/assets/icons/herz.png" alt="chat" />
             Save and continue SWOB
           </router-link>
         </div>
@@ -88,6 +85,9 @@ import { useCompanyStore } from '@/stores/company.js'
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 
 export default {
+  data() {
+    return { swobWelcome: "It's a Match!" }
+  },
   components: { HamburgerMenu },
   setup() {
     const companysStore = useCompanyStore()
@@ -100,7 +100,7 @@ export default {
       mail: 'gigaTorben@me.de',
       logo: 'URL_DES_LOGOS',
       job: 'Junior Softwareentwickler',
-      city: 'Köln'
+      city: 'Köln, NRW'
     }
 
     if (companysStore.companys.length === 0) {

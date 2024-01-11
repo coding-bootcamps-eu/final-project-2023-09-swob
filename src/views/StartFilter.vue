@@ -8,39 +8,41 @@
     <main>
       <img src="@/assets/icons/steps03.svg" alt="step3" class="svg-icon" />
       <form>
-        <h1 v-html="where"></h1>
-        <select v-model="filtersStore.location" name="location" id="location">
-          <option value="berlin">Berlin</option>
-          <option value="hannover">Hannover</option>
-          <option value="dusseldorf">Düsseldorf</option>
-          <option value="mainz">Mainz</option>
-          <option value="saarbrucken">Saarbrücken</option>
-          <option value="munich">München</option>
-          <option value="stuttgart">Stuttgart</option>
-          <option value="wiesbaden">Wiesbaden</option>
-          <option value="magdeburg">Magdeburg</option>
-          <option value="potsdam">Potsdam</option>
-          <option value="schwerin">Schwerin</option>
-          <option value="kiel">Kiel</option>
-          <option value="erfurt">Erfurt</option>
-          <option value="bremen">Bremen</option>
-          <option value="hamburg">Hamburg</option>
-          <option value="cologne">Köln</option>
-          <option value="frankfurt">Frankfurt am Main</option>
-          <option value="karlsruhe">Karlsruhe</option>
-          <option value="stuttgart">Stuttgart</option>
-          <option value="dortmund">Dortmund</option>
-          <option value="essen">Essen</option>
-          <option value="leipzig">Leipzig</option>
-          <option value="dresden">Dresden</option>
-          <option value="nuremberg">Nürnberg</option>
-          <option value="duisburg">Duisburg</option>
-          <option value="bochum">Bochum</option>
-          <option value="wuppertal">Wuppertal</option>
-          <option value="bielefeld">Bielefeld</option>
-          <option value="bonn">Bonn</option>
-          <option value="mannheim">Mannheim</option>
-        </select>
+        <div class="search">
+          <h1 v-html="where"></h1>
+          <select v-model="filtersStore.location" name="location" id="location">
+            <option value="berlin">Berlin</option>
+            <option value="hannover">Hannover</option>
+            <option value="dusseldorf">Düsseldorf</option>
+            <option value="mainz">Mainz</option>
+            <option value="saarbrucken">Saarbrücken</option>
+            <option value="munich">München</option>
+            <option value="stuttgart">Stuttgart</option>
+            <option value="wiesbaden">Wiesbaden</option>
+            <option value="magdeburg">Magdeburg</option>
+            <option value="potsdam">Potsdam</option>
+            <option value="schwerin">Schwerin</option>
+            <option value="kiel">Kiel</option>
+            <option value="erfurt">Erfurt</option>
+            <option value="bremen">Bremen</option>
+            <option value="hamburg">Hamburg</option>
+            <option value="cologne">Köln</option>
+            <option value="frankfurt">Frankfurt am Main</option>
+            <option value="karlsruhe">Karlsruhe</option>
+            <option value="stuttgart">Stuttgart</option>
+            <option value="dortmund">Dortmund</option>
+            <option value="essen">Essen</option>
+            <option value="leipzig">Leipzig</option>
+            <option value="dresden">Dresden</option>
+            <option value="nuremberg">Nürnberg</option>
+            <option value="duisburg">Duisburg</option>
+            <option value="bochum">Bochum</option>
+            <option value="wuppertal">Wuppertal</option>
+            <option value="bielefeld">Bielefeld</option>
+            <option value="bonn">Bonn</option>
+            <option value="mannheim">Mannheim</option>
+          </select>
+        </div>
         <h1 v-html="what"></h1>
         <div class="type-of-employment">
           <label for="temporary">
@@ -207,7 +209,7 @@
           </select>
         </div>
       </form>
-      <button @click="confirmFilters" class="btn-style-1">confirm</button>
+      <button @click="confirmFilters" id="btn-surround" class="btn-style-1">confirm</button>
     </main>
   </div>
 </template>
@@ -336,4 +338,10 @@ export default {
 
 <style scoped>
 @import '@/assets/css/FilterScreen.css';
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding-bottom: 0.8rem;
+}
 </style>

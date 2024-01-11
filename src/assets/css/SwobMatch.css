@@ -86,6 +86,12 @@ p {
   height: 3vh;
 }
 
+@media only screen and (max-width: 390px) {
+  .text {
+    width: 130%;
+  }
+}
+
 .user-img-contain,
 .company {
   background-color: white;
@@ -118,6 +124,7 @@ p {
   padding-bottom: 0rem;
   gap: 3rem;
 }
+
 .link a {
   all: unset;
   color: var(--clr-dropdown);

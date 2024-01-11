@@ -7,7 +7,11 @@
     <main>
       <form>
         <div class="username-and-password">
-          <label for="username" v-html="chooseUsername"></label>
+          <div class="createAccount">
+            <h1 v-html="createAcc"></h1>
+            <p>fill the details to create your swob card</p>
+          </div>
+          <label for="username" v-text="chooseUsername"></label>
           <input
             type="text"
             id="username"
@@ -17,7 +21,7 @@
             required
           />
 
-          <label for="password" v-html="choosePassword"></label>
+          <label for="password" v-text="choosePassword"></label>
           <input
             type="password"
             id="password"
@@ -26,7 +30,7 @@
             v-model="form.password"
             required
           />
-          <label for="repeatPassword"></label>
+          <label for="repeatPassword" v-text="repeatPassword"></label>
           <input
             type="password"
             id="repeatPassword"
@@ -36,12 +40,12 @@
             required
           />
         </div>
-        <hr class="line" />
-        <div class="createAccount">
-          <h1 v-html="createAcc"></h1>
-          <p>fill the details to create your swob card</p>
-        </div>
+        <!-- <hr class="line" /> -->
         <div class="personal-information">
+          <div class="createAccount">
+            <h1 v-text="personalData"></h1>
+            <p>fill the details to create your profile</p>
+          </div>
           <input
             type="text"
             id="lastname"
@@ -113,7 +117,7 @@
             v-model="form.phone"
             required
           />
-          <label for="street" v-html="enterStreetName"></label>
+          <label for="street" v-text="enterStreetName"></label>
           <input
             type="text"
             id="street"
@@ -166,6 +170,8 @@ export default {
       enterPhoneNumber: 'Phone Number',
       enterStreetName: 'Street name',
       createAcc: 'Create account',
+      personalData: 'Personal Information',
+      repeatPassword: 'Please repeat Password',
       form: {
         username: '',
         password: '',

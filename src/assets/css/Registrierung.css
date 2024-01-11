@@ -5,6 +5,7 @@
     'main'
     'footer';
   min-height: 100vh;
+  width: 100vw;
 }
 
 header {
@@ -20,11 +21,9 @@ header {
 }
 
 main {
-  overflow: scroll;
+  overflow: auto;
   grid-area: main;
-  margin-top: 7rem;
-  margin-bottom: 15rem;
-  padding: 1.25rem 1.25rem 10rem 1.25rem;
+  /* padding: 1.25rem 1.25rem 1.25rem 1.25rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +33,6 @@ main {
   z-index: 1;
   max-height: 100vh;
   position: relative;
-  width: 100%;
 }
 
 .main-blurr {
@@ -42,14 +40,16 @@ main {
   backdrop-filter: blur(4px) brightness(110%);
   opacity: 0.06;
   width: 80%;
-  height: 115%;
+  height: 110%;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 2rem;
-  z-index: 0;
+  margin: auto;
+  margin-top: 5rem;
+  padding: 1rem;
+  z-index: -50;
 }
 
 form {
@@ -58,7 +58,7 @@ form {
   align-items: center;
   padding: 2rem 0.5rem 2rem 0.5rem;
   border-radius: 0.5rem;
-  width: 93%;
+  width: 85%;
   margin-top: 20rem;
 }
 
@@ -80,34 +80,35 @@ form {
   font-size: 0.8rem;
 }
 
-.line {
+/* .line {
   height: 0.02rem;
   background-color: var(--clr-accent-hr);
   margin: 2.5rem 0;
   border: none;
   width: 95%;
-}
+} */
 
 .createAccount {
   margin-bottom: 1rem;
-  width: 85%;
+  width: 100%;
 }
 
 .createAccount > h1 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-align: left;
   padding-left: 0;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
   margin-top: 0;
 }
 
 .createAccount > p {
   margin: 0;
-  font-size: 0.7rem;
-  font-variant: small-caps;
+  font-size: 0.8rem;
+  text-transform: uppercase;
   color: var(--btn-clr);
   text-align: left;
-  width: 12.5rem;
+  width: 100%;
+  letter-spacing: 0.03rem;
 }
 
 .personal-information {
@@ -116,6 +117,7 @@ form {
   flex-direction: column;
   justify-content: center;
   width: 85%;
+  margin-top: 1.5rem;
 }
 
 .personal-information > label {
@@ -189,6 +191,7 @@ label {
   text-align: left;
   color: var(--form-clr);
   width: 85%;
+  font-size: 0.8rem;
 }
 
 input {
@@ -207,6 +210,8 @@ input {
 input::placeholder {
   text-align: left;
   text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.5;
 }
 
 .flex-postal-city-country {
@@ -227,4 +232,12 @@ input::placeholder {
 .btn-style-1 {
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+
+main::-webkit-scrollbar {
+  width: 0.2em; /* Breite des unsichtbaren Scrollbalkens */
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Farbe des Scrollbalken-Daumens */
 }

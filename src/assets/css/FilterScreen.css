@@ -1,8 +1,4 @@
 body {
-  background-image: url('@/assets/background-img/andrew-kliatskyi-jpu0gMXT9to-unsplash.jpeg');
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
   margin: 0;
 }
 
@@ -21,8 +17,10 @@ header {
 }
 
 main {
-  overflow: hidden;
+  overflow: auto;
   grid-area: main;
+  position: absolute;
+  width: 100%;
   margin-top: 5.7rem;
   padding: 1.25rem;
   display: flex;
@@ -31,7 +29,22 @@ main {
   justify-content: flex-start;
   gap: 1rem;
   text-align: center;
-  z-index: 2;
+  z-index: 100;
+}
+
+main {
+  overflow: auto;
+  grid-area: main;
+  /* padding: 1.25rem 1.25rem 1.25rem 1.25rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  z-index: 1;
+  max-height: 100vh;
+  position: relative;
 }
 
 .main-blurr {
@@ -39,16 +52,34 @@ main {
   backdrop-filter: blur(4px) brightness(110%);
   opacity: 0.06;
   width: 80%;
-  height: 125%;
+  height: 110%;
   position: absolute;
-  top: 25rem;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
+  margin-top: 5rem;
+  padding: 1rem;
   z-index: 1;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1.5rem 2rem 1.5rem;
+  border-radius: 0.5rem;
+  width: 85%;
+  margin-top: 1rem;
+}
+
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rem;
+}
 article {
   width: 90%;
 }
@@ -62,8 +93,8 @@ h1 {
 .type-of-employment {
   display: grid;
   grid-template-columns: 8rem 8rem;
-  justify-content: center;
-  margin: 0.5rem 0.5rem;
+  justify-content: flex-start;
+  margin: 0.5rem 0rem;
   font-size: 0.9rem;
   gap: 0.1rem;
   width: 100%;
@@ -117,4 +148,12 @@ button {
 
 a {
   color: black;
+}
+
+main::-webkit-scrollbar {
+  width: 0.2em; /* Breite des unsichtbaren Scrollbalkens */
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Farbe des Scrollbalken-Daumens */
 }

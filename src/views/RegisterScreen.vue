@@ -4,11 +4,14 @@
       <img class="nav-logo" src="@/assets/icons/Logo_180x180_light.png" alt="SWOB Logo" />
       <HamburgerMenu />
     </header>
-    <div class="main-blurr"></div>
     <main>
       <form>
         <div class="username-and-password">
-          <label for="username" v-html="chooseUsername"></label>
+          <div class="createAccount">
+            <h1 v-html="createAcc"></h1>
+            <p>fill the details to create your swob card</p>
+          </div>
+          <label for="username" v-text="chooseUsername"></label>
           <input
             type="text"
             id="username"
@@ -18,7 +21,7 @@
             required
           />
 
-          <label for="password" v-html="choosePassword"></label>
+          <label for="password" v-text="choosePassword"></label>
           <input
             type="password"
             id="password"
@@ -27,7 +30,7 @@
             v-model="form.password"
             required
           />
-          <label for="repeatPassword"></label>
+          <label for="repeatPassword" v-text="repeatPassword"></label>
           <input
             type="password"
             id="repeatPassword"
@@ -37,12 +40,12 @@
             required
           />
         </div>
-        <hr class="line" />
-        <div class="createAccount">
-          <h1 v-html="createAcc"></h1>
-          <p>fill the details to create your swob card</p>
-        </div>
+        <!-- <hr class="line" /> -->
         <div class="personal-information">
+          <div class="createAccount">
+            <h1 v-text="personalData"></h1>
+            <p>fill the details to create your profile</p>
+          </div>
           <input
             type="text"
             id="lastname"
@@ -60,34 +63,6 @@
             required
           />
           <div class="date-and-gender">
-
-            <label for="password" v-html="choosePassword"></label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="password"
-              v-model="form.password"
-              required
-            />
-            <label for="repeatPassword"></label>
-            <input
-              type="password"
-              id="repeatPassword"
-              name="repeatPassword"
-              placeholder="repeat password"
-              v-model="form.repeatPassword"
-              required
-            />
-          </div>
-          <hr class="line" />
-          <div class="createAccount">
-            <h1 v-html="createAcc"></h1>
-            <p>fill the details to create your swob card</p>
-          </div>
-          <div class="personal-information">
-            <label for="lastname" v-html="enterLastname"></label>
-
             <input
               type="date"
               id="birthdate"
@@ -96,7 +71,6 @@
               v-model="form.birthdate"
               required
             />
-
             <div class="radio-gender">
               <label class="custom-radio">
                 <input
@@ -143,6 +117,7 @@
             v-model="form.phone"
             required
           />
+          <label for="street" v-text="enterStreetName"></label>
           <input
             type="text"
             id="street"
@@ -166,105 +141,11 @@
             <select name="country" id="country" v-model="form.country" required>
               <option value="DE">Deutschland</option>
             </select>
-
-            <label for="firstname" v-html="enterFirstname"></label>
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="first name"
-              v-model="form.firstname"
-              required
-            />
-            <div class="date-and-gender">
-              <div class="birthdate">
-                <label for="birthdate" v-html="enterBirthdate"></label>
-                <input
-                  type="date"
-                  id="birthdate"
-                  name="birthdate"
-                  placeholder="birth date"
-                  v-model="form.birthdate"
-                  required
-                />
-              </div>
-              <div class="radio-gender">
-                <label class="custom-radio">
-                  <input
-                    type="radio"
-                    id="female"
-                    name="gender"
-                    value="female"
-                    v-model="form.gender"
-                    required
-                  />
-                  female
-                </label>
-                <label class="custom-radio">
-                  <input type="radio" id="male" name="gender" value="male" v-model="form.gender" />
-                  male
-                </label>
-                <label class="custom-radio">
-                  <input
-                    type="radio"
-                    id="diverse"
-                    name="gender"
-                    value="diverse"
-                    v-model="form.gender"
-                  />
-                  diverse
-                </label>
-              </div>
-            </div>
-            <label for="email" v-html="enterEmail"></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="email address"
-              size="30"
-              v-model="form.email"
-              required
-            />
-            <label for="phone" v-html="enterPhoneNumber"></label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="phone number"
-              v-model="form.phone"
-              required
-            />
-            <label for="street" v-html="enterStreetName"></label>
-            <input
-              type="text"
-              id="street"
-              name="street"
-              placeholder="street name"
-              v-model="form.street"
-              required
-            />
-            <div class="flex-postal-city-country">
-              <input
-                type="number"
-                id="postalcode"
-                name="postalcode"
-                placeholder="Postal"
-                min="5"
-                max="5"
-                v-model="form.postalcode"
-                required
-              />
-              <input type="text" id="city" name="city" placeholder="City" v-model="form.city" />
-              <select name="country" id="country" v-model="form.country" required>
-                <option value="DE">Deutschland</option>
-              </select>
-            </div>
-
           </div>
         </div>
       </form>
       <button class="btn-style-1" type="button" @click="goToCategory()">Sign Up</button>
+      <div class="main-blurr"></div>
     </main>
   </div>
 </template>
@@ -274,6 +155,9 @@ import { API_URL } from '@/utils/config.js'
 import HamburgerMenu from '@/components/HamburgerMenu.vue'
 
 export default {
+  // created() {
+  //   this.saveData()
+  // },
   data() {
     return {
       users: [],
@@ -286,6 +170,8 @@ export default {
       enterPhoneNumber: 'Phone Number',
       enterStreetName: 'Street name',
       createAcc: 'Create account',
+      personalData: 'Personal Information',
+      repeatPassword: 'Please repeat Password',
       form: {
         username: '',
         password: '',
@@ -306,41 +192,24 @@ export default {
   methods: {
     validatePassword() {
       if (this.form.password !== this.form.repeatPassword) {
-        alert('Passwords do not match.')
+        alert('Passwords do not match')
       }
-    },
-    validatePhoneNumber() {
-      const phoneNumberPattern = /^[+]?[0-9]{6,14}$/
-      const phoneNumber = this.form.phone.trim() //Entfernen von Leerzeichen an Anfang und Ende
-      console.log('Original Phone:', this.form.phone)
-      console.log('Trimmed Phone:', phoneNumber)
-      if (phoneNumberPattern.test(phoneNumber)) {
-        return true
-      } else {
-        alert('Invalid phone number.')
-        return false
-      }
-    },
-    validateEmail() {
-      let mail = document.getElementById('email').value
-      let regx = /^([a-zA-Z0-9._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
-      if (regx.test(mail)) {
-        return true
-      } else {
-        alert('Invalid Email Address.')
-        return false
-      }
-    },
-    validateBirthdate() {
-      const today = new Date()
-      const minAge = 18
-      const inputDate = new Date(this.form.birthdate)
-      const age = today.getFullYear() - inputDate.getFullYear()
-      if (age < minAge) {
-        alert('You must be at least 18 years old')
-        return false
-      }
-      return true
+      // validatePhoneNumber() {
+      //   const phoneNumberPattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g
+      //   if (!phoneNumberPattern.test(this.form.phone)) {
+      //     alert('Invalid phone number.')
+      //   }
+      // //},
+      // validateEmail() {
+      //   let mail = document.getElementById('email').value
+      //   let regx = /^([a-zA-Z0-9._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/
+      //   if (regx.text(mail)) {
+      //     return true
+      //   } else {
+      //     alert('Invalid Email Address.')
+      //     return false
+      //   }
+      // }
     },
     isUsernameUnique() {
       let isUnique = true
@@ -373,12 +242,10 @@ export default {
         alert('Please fill out all fields.')
       } else {
         this.validatePassword()
-        if (
-          this.validatePhoneNumber() &&
-          this.validateEmail() &&
-          this.validateBirthdate() &&
-          this.form.password === this.form.repeatPassword
-        ) {
+        // this.validatePhoneNumber()
+        //this.validateEmail()
+        this.validatePassword()
+        if (this.form.password === this.form.repeatPassword) {
           this.isUsernameUnique()
         }
       }

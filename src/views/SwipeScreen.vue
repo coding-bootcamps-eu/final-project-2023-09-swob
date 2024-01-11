@@ -54,17 +54,11 @@
               </button>
             </p>
           </div>
-          <!-- <div v-show="showMoreInfo" class="more-info-content" ref="moreInfoContent">
-            <span class="close" @click="toggleMoreInfo">&times;</span>
-            <div class="modal-content info-box-content">
-              <p>{{ offersStore.offers[currentIndex].description }}</p>
-            </div>
-          </div> -->
 
           <!-- Standort -->
           <div class="location-section">
-            <p class="workplace">Workplace</p>
-            <p class="location">{{ profiles[currentIndex].location }}</p>
+            <p class="workplace">Gallery</p>
+            <p class="location">{{ companysStore.companys[currentIndex].location }}</p>
           </div>
 
           <!-- Bildergalerie -->
@@ -138,18 +132,12 @@ export default {
       matches: [],
       profiles: [
         {
-          image: blancaImage,
-          location: 'City A',
           gallery: [blancaImage, blancaImage, blancaImage]
         },
         {
-          image: mimiImage,
-          location: 'City B',
           gallery: [mimiImage, mimiImage]
         },
         {
-          image: giulioImage,
-          location: 'City C',
           gallery: [giulioImage]
         }
       ],
@@ -249,7 +237,6 @@ export default {
         isMatch: true
       }
       console.log(this.matches[this.currentIndex].id)
-
 
       return fetch(API_URL + '/offers' + this.matches[this.currentIndex].id, {
         method: 'PUT',

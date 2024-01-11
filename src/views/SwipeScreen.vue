@@ -22,17 +22,17 @@
             <div class="job-description-container">
               <div class="job-description">
                 {{ offersStore.offers[currentIndex].title }}
+                <!-- Company Name -->
+                <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
               </div>
-              <div class="company-logo-container">
-                <img
-                  class="company-logo"
-                  :src="companysStore.companys[currentIndex].logo"
-                  alt="Company Logo"
-                />
-              </div>
+              <!-- <div class="company-logo-container"> -->
+              <img
+                class="company-logo"
+                :src="companysStore.companys[currentIndex].logo"
+                alt="Company Logo"
+              />
+              <!-- </div> -->
             </div>
-            <!-- Company Name -->
-            <h3 class="company-name">{{ companysStore.companys[currentIndex].name }}</h3>
           </div>
           <!-- Filter -->
           <div class="filter-section">
@@ -86,7 +86,7 @@
 
         <div class="swipe-buttons">
           <button @click="swipeLeft">
-            <img src="@/assets/icons/no.png" alt="Swipe Left Icon" />
+            <img src="@/assets/icons/no.png" alt="Swipe Left Icon" class="img-size" />
           </button>
           <div class="link-to-match">
             <!-- Wenn ein match successful ist, routet er zum MatchScreen -->
@@ -98,7 +98,7 @@
               @click="swipeRight"
               class="button"
             >
-              <img class="icon-green" src="@/assets/icons/yes.png" alt="Swipe Right Icon" />
+              <img class="img-size" src="@/assets/icons/yes.png" alt="Swipe Right Icon" />
             </router-link>
           </div>
         </div>
@@ -250,7 +250,6 @@ export default {
       }
       console.log(this.matches[this.currentIndex].id)
 
-
       return fetch(API_URL + '/offers' + this.matches[this.currentIndex].id, {
         method: 'PUT',
         headers: {
@@ -321,4 +320,14 @@ export default {
 
 <style scoped>
 @import '@/assets/css/SwipeScreen.css';
+
+@media only screen and (max-width: 390px) {
+  .info-box {
+    font-size: 0.85rem;
+  }
+
+  .swipe-buttons {
+    margin-top: 0.2rem;
+  }
+}
 </style>
